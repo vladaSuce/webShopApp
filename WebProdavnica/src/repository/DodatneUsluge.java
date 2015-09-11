@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import model.DodatnaUsluga;
 
 public class DodatneUsluge {
-	private static String DODATNE_USLUGE_DATOTEKA="dodusl.dat";
+	private static String DODATNE_USLUGE_DATOTEKA="WebContent/datoteke/dodusl.dat";
 	private static DodatneUsluge instance;
 	protected ArrayList<DodatnaUsluga>usluge;
 	public  static final int  pretragaPoNazivu = 1;

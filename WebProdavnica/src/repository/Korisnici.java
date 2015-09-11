@@ -11,7 +11,7 @@ import model.Korisnik;
 
 public class Korisnici {
 	public static Korisnici instance;
-	private static String KORISNICI_DATOTEKA="korisnici.dat";
+	private static String KORISNICI_DATOTEKA="WebContent/datoteke/korisnici.dat";
 	protected ArrayList<Korisnik>korisnici;
 	private Korisnici(){
 		korisnici = new ArrayList<Korisnik>();
@@ -82,6 +82,16 @@ public class Korisnici {
 		}
 
 	}
+	public boolean loginKorisnik(String userName,String password){
+		boolean retVal =false;
+		for(Korisnik k :korisnici){
+			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
+				retVal =true;
+				break;
+			}
+		}
+		return retVal;
+	}
 	public void editKorisnik(Korisnik k){
 		for(Korisnik korisnik :korisnici){
 			if(korisnik.equals(k)){
@@ -97,5 +107,8 @@ public class Korisnici {
 			return instance;
 		else 
 			return new Korisnici();
+	}
+	public ArrayList<Korisnik> getAllKorisnik(){
+		return korisnici;
 	}
 }

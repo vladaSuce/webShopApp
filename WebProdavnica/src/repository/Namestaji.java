@@ -13,7 +13,7 @@ import model.Namestaj;
 public class Namestaji {
 
 
-	private static String NAMESTAJ_DATOTETKA="namestaji.dat";
+	private static String NAMESTAJ_DATOTETKA="WebContent/datoteke/namestaji.dat";
 	private static Namestaji instance;
 	protected ArrayList<Namestaj>namestaji;
 

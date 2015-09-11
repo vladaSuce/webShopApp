@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import model.Kategorija;
 
 public class Kategorije {
-	private static String KATEGORIJE_DATOTETKA="kategorije.dat";
+	private static String KATEGORIJE_DATOTETKA="WebContent/datoteke/kategorije.dat";
 	private static Kategorije instance;
 	protected ArrayList<Kategorija>kategorije;
 
@@ -88,5 +88,8 @@ public class Kategorije {
 		}
 		else
 			return new Kategorije();
+	}
+	public ArrayList<Kategorija> getAllKategorija(){
+		return kategorije;
 	}
 }

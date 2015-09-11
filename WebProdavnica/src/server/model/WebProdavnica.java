@@ -21,6 +21,7 @@ public class WebProdavnica {
 	private Kategorije kategorije ;
 	private Korisnici korisnici ;
 	private Namestaji namestaji ;	
+	private static WebProdavnica instance;
 
 	public WebProdavnica(){
 		usluge = DodatneUsluge.getInstance();
@@ -28,6 +29,13 @@ public class WebProdavnica {
 		korisnici = Korisnici.getInstance();
 		namestaji = Namestaji.getInstance();
 
+	}
+	public static WebProdavnica getInstance(){
+		if(instance!=null){
+			return instance;
+		}
+		else
+			return new WebProdavnica();
 	}
 
 	public synchronized void dodajKategoriju(Kategorija kat) throws Exception{
@@ -113,5 +121,11 @@ public class WebProdavnica {
 	}
 	public synchronized ArrayList<Namestaj>pretragaNamestajaMULTY(ModelPretrageDTO dto) throws Exception{
 		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.MULTI_PRETRAGA);
+	}
+	public synchronized boolean loginKorisnik(String userName,String password) throws Exception{
+		return korisnici.loginKorisnik(userName, password);
+	}
+	public synchronized Korisnik loadKorisnik(String userName){
+		return korisnici.loadKorisnik(userName);
 	}
 }
