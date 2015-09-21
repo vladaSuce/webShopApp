@@ -5,12 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.DodatnaUsluga;
 
 public class DodatneUsluge {
-	private static String DODATNE_USLUGE_DATOTEKA="WebContent/datoteke/dodusl.dat";
+	private static String DODATNE_USLUGE_DATOTEKA="/dodusl.dat";
 	private static DodatneUsluge instance;
 	protected ArrayList<DodatnaUsluga>usluge;
 	public  static final int  pretragaPoNazivu = 1;
@@ -31,7 +32,17 @@ public class DodatneUsluge {
 	private void loadDodatneUsluge() {
 		try{
 			usluge.clear();
+			URL resource = getClass().getClassLoader().getResource("/datoteke/kategorije.dat");
+			URL resource1 = getClass().getClassLoader().getResource("datoteke/kategorije.dat");
+			System.out.println(resource);
+			System.out.println(resource1);
+			
+			String path = resource.getPath();
+			System.out.println(path);
 			File f = new File(DODATNE_USLUGE_DATOTEKA);
+			System.out.println(f.getPath()+"---path");
+			System.out.println(f.getCanonicalPath()+"--");
+			System.out.println(f.getAbsolutePath());
 			if(!f.exists()){
 				f.createNewFile();
 			}

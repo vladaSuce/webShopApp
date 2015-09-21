@@ -11,7 +11,7 @@ import model.Korisnik;
 
 public class Korisnici {
 	public static Korisnici instance;
-	private static String KORISNICI_DATOTEKA="WebContent/datoteke/korisnici.dat";
+	private static String KORISNICI_DATOTEKA="/korisnici.dat";
 	protected ArrayList<Korisnik>korisnici;
 	private Korisnici(){
 		korisnici = new ArrayList<Korisnik>();
@@ -25,6 +25,9 @@ public class Korisnici {
 			if (!f.exists()){
 				f.createNewFile();
 			}
+			System.out.println(f.getPath()+"---path");
+			System.out.println(f.getAbsolutePath()+"---getAbsolutePath");
+			System.out.println(f.getCanonicalPath()+"---getCanonicalPath");
 			FileOutputStream fos = new FileOutputStream(f);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(korisnici);
