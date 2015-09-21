@@ -32,24 +32,21 @@ public class DodatneUsluge {
 	private void loadDodatneUsluge() {
 		try{
 			usluge.clear();
-			URL resource = getClass().getClassLoader().getResource("/datoteke/kategorije.dat");
-			URL resource1 = getClass().getClassLoader().getResource("datoteke/kategorije.dat");
+			URL resource = getClass().getClassLoader().getResource("/datoteke/dodatneusluge.dat");
+			//URL resource1 = getClass().getClassLoader().getResource("datoteke/dodatneusluge.dat");
 			System.out.println(resource);
-			System.out.println(resource1);
+		//	System.out.println(resource1);
 			
 			String path = resource.getPath();
 			System.out.println(path);
-			File f = new File(DODATNE_USLUGE_DATOTEKA);
-			System.out.println(f.getPath()+"---path");
-			System.out.println(f.getCanonicalPath()+"--");
-			System.out.println(f.getAbsolutePath());
-			if(!f.exists()){
-				f.createNewFile();
+			
+			FileInputStream fis = new FileInputStream(resource.getPath());
+			if(fis==null){
+				
 			}
-			FileInputStream fis = new FileInputStream(f);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			usluge = (ArrayList<DodatnaUsluga>)ois.readObject();
-		}catch(Exception exp){
+		}catch(Exception exp){	
 			exp.printStackTrace();
 		}
 	}

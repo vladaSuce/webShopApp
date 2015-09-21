@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.Korisnik;
@@ -41,9 +42,9 @@ public class Korisnici {
 	private void loadKorisnici(){
 		try{
 			korisnici.clear();
-			File f = new File(KORISNICI_DATOTEKA);
-			FileInputStream fos = new FileInputStream(f);
-			ObjectInputStream object = new ObjectInputStream(fos);
+			URL resource = getClass().getClassLoader().getResource("/datoteke/korisnici.dat");
+			FileInputStream fis = new FileInputStream(resource.getPath());
+			ObjectInputStream object = new ObjectInputStream(fis);
 			korisnici = (ArrayList<Korisnik>) object.readObject();
 			object.close();
 		} catch (Exception e){

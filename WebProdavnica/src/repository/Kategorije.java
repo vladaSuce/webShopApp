@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.Kategorija;
@@ -29,11 +30,9 @@ public class Kategorije {
 	private void loadKategorije() {
 		try{
 			kategorije.clear();
-			File f = new File(KATEGORIJE_DATOTETKA);
-			if(!f.exists()){
-				f.createNewFile();
-			}
-			FileInputStream fis = new FileInputStream(f);
+			URL resource = getClass().getClassLoader().getResource("/datoteke/kategorije.dat");
+			
+			FileInputStream fis = new FileInputStream(resource.getPath());
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			kategorije = (ArrayList<Kategorija>)ois.readObject();
 		}catch(Exception exp){
