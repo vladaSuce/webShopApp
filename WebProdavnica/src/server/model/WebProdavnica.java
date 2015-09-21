@@ -24,10 +24,10 @@ public class WebProdavnica {
 	private static WebProdavnica instance;
 
 	public WebProdavnica(){
-		usluge = DodatneUsluge.getInstance();
-		kategorije = Kategorije.getInstance();
+		//usluge = DodatneUsluge.getInstance();
+		//kategorije = Kategorije.getInstance();
 		korisnici = Korisnici.getInstance();
-		namestaji = Namestaji.getInstance();
+		//namestaji = Namestaji.getInstance();
 
 	}
 	public static WebProdavnica getInstance(){
@@ -127,5 +127,10 @@ public class WebProdavnica {
 	}
 	public synchronized Korisnik loadKorisnik(String userName){
 		return korisnici.loadKorisnik(userName);
+	}
+	public synchronized void printKorisnici(){
+		for(int i =0;i<korisnici.getAllKorisnik().size();i++){
+			System.out.println("korisnik :"+i+" "+korisnici.getAllKorisnik().get(i));
+		}
 	}
 }

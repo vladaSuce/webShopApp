@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
-	<display-name>WebProdavnica</display-name>
-	<welcome-file-list>
-		<welcome-file>LoginForm.jsp</welcome-file>
-	</welcome-file-list>
-	<servlet>
-		<description></description>
-		<display-name>LoginUserServlet</display-name>
-		<servlet-name>LoginUserServlet</servlet-name>
-		<servlet-class>servlet.LoginUserServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginUserServlet</servlet-name>
-		<url-pattern>/LoginUserServlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Home.jsp</servlet-name>
-		<jsp-file>/Home.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Home.jsp</servlet-name>
-		<url-pattern>/Home.jsp</url-pattern>
-	</servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>WebProdavnica</display-name>
+  <welcome-file-list>
+    <welcome-file>LoginForm.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>LoginUserServlet</display-name>
+    <servlet-name>LoginUserServlet</servlet-name>
+    <servlet-class>servlet.LoginUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginUserServlet</servlet-name>
+    <url-pattern>/LoginUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Home.jsp</servlet-name>
+    <jsp-file>/Home.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Home.jsp</servlet-name>
+    <url-pattern>/Home.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddKorisnikServlet</display-name>
+    <servlet-name>AddKorisnikServlet</servlet-name>
+    <servlet-class>servlet.AddKorisnikServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddKorisnikServlet</servlet-name>
+    <url-pattern>/AddKorisnikServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveUserServlet</display-name>
+    <servlet-name>RemoveUserServlet</servlet-name>
+    <servlet-class>servlet.RemoveUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveUserServlet</servlet-name>
+    <url-pattern>/RemoveUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
