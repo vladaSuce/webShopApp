@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import model.Korisnik;
+import model.Korisnik.Uloga;
 
 public class Korisnici {
 	public static Korisnici instance;
@@ -47,6 +48,7 @@ public class Korisnici {
 			ObjectInputStream object = new ObjectInputStream(fis);
 			korisnici = (ArrayList<Korisnik>) object.readObject();
 			object.close();
+			fis.close();
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -91,6 +93,19 @@ public class Korisnici {
 		for(Korisnik k :korisnici){
 			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
 				retVal =true;
+				break;
+			}
+		}
+		return retVal;
+	}
+	public boolean loginAdmin(String userName,String password){
+		boolean retVal =false;
+		for(Korisnik k :korisnici){
+			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
+				if(k.getUloga().equals(Uloga.menadzer))
+					retVal =true;
+				else
+					retVal=false;
 				break;
 			}
 		}

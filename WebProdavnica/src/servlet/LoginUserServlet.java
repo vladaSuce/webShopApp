@@ -59,7 +59,8 @@ public class LoginUserServlet extends HttpServlet {
 			Korisnik korisnik = gson.fromJson(json, Korisnik.class);
 			WebProdavnica prodavnica = WebProdavnica.getInstance();
 			JsonObject result = new JsonObject();
-			if(prodavnica.loginKorisnik(korisnik.getKorisnickoIme(), korisnik.getLozinka())){
+		
+			if(loginSucessfull(korisnik, prodavnica)){
 				// TODO: write some logic to check whether user exist or not, return statusCode other than 200 in response
 				
 				// put page name for redirection in result JSON
@@ -79,6 +80,11 @@ public class LoginUserServlet extends HttpServlet {
 		}catch(Exception exp){
 			throw new ServletException(exp);
 		}
+	}
+
+	protected boolean loginSucessfull(Korisnik korisnik, WebProdavnica prodavnica)
+			throws Exception {
+		return prodavnica.loginKorisnik(korisnik.getKorisnickoIme(), korisnik.getLozinka());
 	}
 
 }

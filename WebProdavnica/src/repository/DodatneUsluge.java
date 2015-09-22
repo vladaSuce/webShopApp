@@ -46,6 +46,8 @@ public class DodatneUsluge {
 			}
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			usluge = (ArrayList<DodatnaUsluga>)ois.readObject();
+			ois.close();
+			fis.close();
 		}catch(Exception exp){	
 			exp.printStackTrace();
 		}

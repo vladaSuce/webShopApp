@@ -39,6 +39,8 @@ public class Namestaji {
 			FileInputStream fis = new FileInputStream(resource.getPath());
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			namestaji = (ArrayList<Namestaj>)ois.readObject();
+			ois.close();
+			fis.close();
 		}catch(Exception exp){
 			exp.printStackTrace();
 		}

@@ -125,6 +125,9 @@ public class WebProdavnica {
 	public synchronized boolean loginKorisnik(String userName,String password) throws Exception{
 		return korisnici.loginKorisnik(userName, password);
 	}
+	public synchronized boolean loginAdmin(String userName,String password) throws Exception{
+		return korisnici.loginAdmin(userName, password);
+	}
 	public synchronized Korisnik loadKorisnik(String userName){
 		return korisnici.loadKorisnik(userName);
 	}

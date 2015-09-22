@@ -35,6 +35,8 @@ public class Kategorije {
 			FileInputStream fis = new FileInputStream(resource.getPath());
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			kategorije = (ArrayList<Kategorija>)ois.readObject();
+			ois.close();
+			fis.close();
 		}catch(Exception exp){
 			exp.printStackTrace();
 		}
