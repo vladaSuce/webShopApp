@@ -112,7 +112,7 @@
     <servlet-name>AddNamestaj</servlet-name>
     <url-pattern>/AddNamestaj</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>EditNamestaj</display-name>
     <servlet-name>EditNamestaj</servlet-name>
@@ -122,7 +122,7 @@
     <servlet-name>EditNamestaj</servlet-name>
     <url-pattern>/EditNamestaj</url-pattern>
   </servlet-mapping>
-      <servlet>
+  <servlet>
     <description></description>
     <display-name>RemoveNamestaj</display-name>
     <servlet-name>RemoveNamestaj</servlet-name>
@@ -131,5 +131,15 @@
   <servlet-mapping>
     <servlet-name>RemoveNamestaj</servlet-name>
     <url-pattern>/RemoveNamestaj</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PretragaNamestajaServlet</display-name>
+    <servlet-name>PretragaNamestajaServlet</servlet-name>
+    <servlet-class>servlet.PretragaNamestajaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PretragaNamestajaServlet</servlet-name>
+    <url-pattern>/PretragaNamestajaServlet</url-pattern>
   </servlet-mapping>
 </web-app>

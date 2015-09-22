@@ -122,6 +122,9 @@ public class WebProdavnica {
 	public synchronized ArrayList<Namestaj>pretragaNamestajaMULTY(ModelPretrageDTO dto) throws Exception{
 		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.MULTI_PRETRAGA);
 	}
+	public synchronized ArrayList<Namestaj>pretragaNamestaja(ModelPretrageDTO dto,int tipPretrage) throws Exception{
+		return namestaji.pretragaNamestaja(dto, tipPretrage);
+	}
 	public synchronized boolean loginKorisnik(String userName,String password) throws Exception{
 		return korisnici.loginKorisnik(userName, password);
 	}
