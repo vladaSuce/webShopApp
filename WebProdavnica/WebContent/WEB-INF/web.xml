@@ -82,7 +82,7 @@
     <servlet-name>AddDodatnaUsluga</servlet-name>
     <url-pattern>/AddDodatnaUsluga</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>EditDodatnaUsluga</display-name>
     <servlet-name>EditDodatnaUsluga</servlet-name>
@@ -92,7 +92,7 @@
     <servlet-name>EditDodatnaUsluga</servlet-name>
     <url-pattern>/EditDodatnaUsluga</url-pattern>
   </servlet-mapping>
-      <servlet>
+  <servlet>
     <description></description>
     <display-name>RemoveDodatnaUsluga</display-name>
     <servlet-name>RemoveDodatnaUsluga</servlet-name>
@@ -101,5 +101,35 @@
   <servlet-mapping>
     <servlet-name>RemoveDodatnaUsluga</servlet-name>
     <url-pattern>/RemoveDodatnaUsluga</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNamestaj</display-name>
+    <servlet-name>AddNamestaj</servlet-name>
+    <servlet-class>servlet.AddNamestaj</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNamestaj</servlet-name>
+    <url-pattern>/AddNamestaj</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>EditNamestaj</display-name>
+    <servlet-name>EditNamestaj</servlet-name>
+    <servlet-class>servlet.EditNamestaj</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditNamestaj</servlet-name>
+    <url-pattern>/EditNamestaj</url-pattern>
+  </servlet-mapping>
+      <servlet>
+    <description></description>
+    <display-name>RemoveNamestaj</display-name>
+    <servlet-name>RemoveNamestaj</servlet-name>
+    <servlet-class>servlet.RemoveNamestaj</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveNamestaj</servlet-name>
+    <url-pattern>/RemoveNamestaj</url-pattern>
   </servlet-mapping>
 </web-app>
