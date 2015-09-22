@@ -12,11 +12,11 @@
 	<h1>Login Page</h1>
 	<center>
 		<h2>Signup Details</h2>
-		<form onsubmit="korisnik.loginKorisnika('#usernameLogin', '#passwordLogin'); return false;">
+		<form onsubmit="korisnik.loginAdminKorisnika('#usernameLogin', '#passwordLogin'); return false;">
 			<br />Username:<input type="text" id="usernameLogin" name="username"> 
 			<br />Password:<input type="password" id="passwordLogin" name="password"> 
 			<br /><input type="submit" name="submit" value="Submit"> 
-			<br/> <a href="./AdminLogin.jsp">Logovanje menadzera(admina)</a>
+			<br/> <a href="./LoginForm.jsp">Logovanje prodavaca i kupaca</a>
 		</form>
 	</center>
 </body>
