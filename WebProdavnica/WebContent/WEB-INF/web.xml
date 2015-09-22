@@ -42,4 +42,34 @@
     <servlet-name>RemoveUserServlet</servlet-name>
     <url-pattern>/RemoveUserServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddKategorijaServlet</display-name>
+    <servlet-name>AddKategorijaServlet</servlet-name>
+    <servlet-class>servlet.AddKategorijaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddKategorijaServlet</servlet-name>
+    <url-pattern>/AddKategorijaServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DeleteKategorijaServlet</display-name>
+    <servlet-name>DeleteKategorijaServlet</servlet-name>
+    <servlet-class>servlet.DeleteKategorijaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteKategorijaServlet</servlet-name>
+    <url-pattern>/DeleteKategorijaServlet</url-pattern>
+  </servlet-mapping>
+      <servlet>
+    <description></description>
+    <display-name>EditKategorijaServlet</display-name>
+    <servlet-name>EditKategorijaServlet</servlet-name>
+    <servlet-class>servlet.EditKategorijaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditKategorijaServlet</servlet-name>
+    <url-pattern>/EditKategorijaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
