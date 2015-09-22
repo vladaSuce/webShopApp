@@ -52,7 +52,7 @@
     <servlet-name>AddKategorijaServlet</servlet-name>
     <url-pattern>/AddKategorijaServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>DeleteKategorijaServlet</display-name>
     <servlet-name>DeleteKategorijaServlet</servlet-name>
@@ -62,7 +62,7 @@
     <servlet-name>DeleteKategorijaServlet</servlet-name>
     <url-pattern>/DeleteKategorijaServlet</url-pattern>
   </servlet-mapping>
-      <servlet>
+  <servlet>
     <description></description>
     <display-name>EditKategorijaServlet</display-name>
     <servlet-name>EditKategorijaServlet</servlet-name>
@@ -71,5 +71,35 @@
   <servlet-mapping>
     <servlet-name>EditKategorijaServlet</servlet-name>
     <url-pattern>/EditKategorijaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddDodatnaUsluga</display-name>
+    <servlet-name>AddDodatnaUsluga</servlet-name>
+    <servlet-class>servlet.AddDodatnaUsluga</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDodatnaUsluga</servlet-name>
+    <url-pattern>/AddDodatnaUsluga</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>EditDodatnaUsluga</display-name>
+    <servlet-name>EditDodatnaUsluga</servlet-name>
+    <servlet-class>servlet.EditDodatnaUsluga</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditDodatnaUsluga</servlet-name>
+    <url-pattern>/EditDodatnaUsluga</url-pattern>
+  </servlet-mapping>
+      <servlet>
+    <description></description>
+    <display-name>RemoveDodatnaUsluga</display-name>
+    <servlet-name>RemoveDodatnaUsluga</servlet-name>
+    <servlet-class>servlet.RemoveDodatnaUsluga</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveDodatnaUsluga</servlet-name>
+    <url-pattern>/RemoveDodatnaUsluga</url-pattern>
   </servlet-mapping>
 </web-app>
