@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.DodatnaUsluga;
 import model.Namestaj;
+import model.Salon;
 import server.model.WebProdavnica;
 
 import com.google.gson.Gson;
@@ -54,7 +55,8 @@ public class AddNamestaj extends HttpServlet {
 		Gson gson = new GsonBuilder().create();
 		Namestaj namestaj = gson.fromJson(json, Namestaj.class);
 		WebProdavnica prodavnica = WebProdavnica.getInstance();
-		
+		Salon salon = (Salon)session.getAttribute("salon");
+		namestaj.setSalon(salon);
 		// TODO  kod svih krudova treba dorada da se proveri rola ulogovanog korisnika
 		updateNamestaj(namestaj, prodavnica);
 	

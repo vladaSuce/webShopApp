@@ -19,6 +19,7 @@ import com.google.gson.JsonObject;
 
 import model.Korisnik;
 import model.Korisnik.Uloga;
+import model.Salon;
 
 /**
  * Servlet implementation class LoginUserServlet
@@ -66,6 +67,8 @@ public class LoginUserServlet extends HttpServlet {
 				// put page name for redirection in result JSON
 				korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
 				session.setAttribute("user", korisnik);
+				Salon salon = prodavnica.getSalon();
+				session.setAttribute("salon", salon);
 				String urlToRedirect = "Home.jsp";
 				result.addProperty("url", urlToRedirect);
 			}
