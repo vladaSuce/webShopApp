@@ -5,12 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.DodatnaUsluga;
 
 public class DodatneUsluge {
-	private static String DODATNE_USLUGE_DATOTEKA="WebContent/datoteke/dodusl.dat";
+	private static String DODATNE_USLUGE_DATOTEKA="C:/WebShopVlada/dodusl.dat";
 	private static DodatneUsluge instance;
 	protected ArrayList<DodatnaUsluga>usluge;
 	public  static final int  pretragaPoNazivu = 1;
@@ -31,14 +32,26 @@ public class DodatneUsluge {
 	private void loadDodatneUsluge() {
 		try{
 			usluge.clear();
-			File f = new File(DODATNE_USLUGE_DATOTEKA);
-			if(!f.exists()){
-				f.createNewFile();
+			URL resource =null;
+			File f  = new File(DODATNE_USLUGE_DATOTEKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/dodusl.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
 			}
-			FileInputStream fis = new FileInputStream(f);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			usluge = (ArrayList<DodatnaUsluga>)ois.readObject();
-		}catch(Exception exp){
+			
+			usluge = (ArrayList<DodatnaUsluga>)object.readObject();
+			object.close();
+			fis.close();
+		}catch(Exception exp){	
 			exp.printStackTrace();
 		}
 	}

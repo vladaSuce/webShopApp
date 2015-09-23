@@ -7,10 +7,12 @@ import model.Kategorija;
 import model.Korisnik;
 import model.ModelPretrageDTO;
 import model.Namestaj;
+import model.Salon;
 import repository.DodatneUsluge;
 import repository.Kategorije;
 import repository.Korisnici;
 import repository.Namestaji;
+import repository.SalonRepo;
 import repository.TipPretrageNamestaja;
 
 
@@ -21,12 +23,14 @@ public class WebProdavnica {
 	private Kategorije kategorije ;
 	private Korisnici korisnici ;
 	private Namestaji namestaji ;	
+	private SalonRepo salonRepo;
 	private static WebProdavnica instance;
 
 	public WebProdavnica(){
+		korisnici = Korisnici.getInstance();
+		salonRepo = SalonRepo.getInstance();
 		usluge = DodatneUsluge.getInstance();
 		kategorije = Kategorije.getInstance();
-		korisnici = Korisnici.getInstance();
 		namestaji = Namestaji.getInstance();
 
 	}
@@ -122,10 +126,24 @@ public class WebProdavnica {
 	public synchronized ArrayList<Namestaj>pretragaNamestajaMULTY(ModelPretrageDTO dto) throws Exception{
 		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.MULTI_PRETRAGA);
 	}
+	public synchronized ArrayList<Namestaj>pretragaNamestaja(ModelPretrageDTO dto,int tipPretrage) throws Exception{
+		return namestaji.pretragaNamestaja(dto, tipPretrage);
+	}
 	public synchronized boolean loginKorisnik(String userName,String password) throws Exception{
 		return korisnici.loginKorisnik(userName, password);
 	}
+	public synchronized boolean loginAdmin(String userName,String password) throws Exception{
+		return korisnici.loginAdmin(userName, password);
+	}
 	public synchronized Korisnik loadKorisnik(String userName){
 		return korisnici.loadKorisnik(userName);
+	}
+	public synchronized Salon getSalon (){
+		return salonRepo.getSalon();
+	}
+	public synchronized void printKorisnici(){
+		for(int i =0;i<korisnici.getAllKorisnik().size();i++){
+			System.out.println("korisnik :"+i+" "+korisnici.getAllKorisnik().get(i));
+		}
 	}
 }

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.ModelPretrageDTO;
@@ -13,7 +14,7 @@ import model.Namestaj;
 public class Namestaji {
 
 
-	private static String NAMESTAJ_DATOTETKA="WebContent/datoteke/namestaji.dat";
+	private static String NAMESTAJ_DATOTETKA="C:/WebShopVlada/namestaji.dat";
 	private static Namestaji instance;
 	protected ArrayList<Namestaj>namestaji;
 
@@ -33,13 +34,23 @@ public class Namestaji {
 	private void loadNamestaji() {
 		try{
 			namestaji.clear();
-			File f = new File(NAMESTAJ_DATOTETKA);
-			if(!f.exists()){
-				f.createNewFile();
+			File f  = new File(NAMESTAJ_DATOTETKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+			URL resource=null;
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/namestaji.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
 			}
-			FileInputStream fis = new FileInputStream(f);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			namestaji = (ArrayList<Namestaj>)ois.readObject();
+			namestaji = (ArrayList<Namestaj>)object.readObject();
+			object.close();
+			fis.close();
 		}catch(Exception exp){
 			exp.printStackTrace();
 		}

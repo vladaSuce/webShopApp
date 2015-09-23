@@ -2,16 +2,19 @@ package repository;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.Korisnik;
+import model.Korisnik.Uloga;
 
 public class Korisnici {
 	public static Korisnici instance;
-	private static String KORISNICI_DATOTEKA="WebContent/datoteke/korisnici.dat";
+	private static String KORISNICI_DATOTEKA="C:/WebShopVlada/korisnici.dat";
 	protected ArrayList<Korisnik>korisnici;
 	private Korisnici(){
 		korisnici = new ArrayList<Korisnik>();
@@ -20,11 +23,8 @@ public class Korisnici {
 
 	public void saveKorisnici(){
 		try{
-			File f = new File(KORISNICI_DATOTEKA);
 
-			if (!f.exists()){
-				f.createNewFile();
-			}
+			File f = new File(KORISNICI_DATOTEKA);
 			FileOutputStream fos = new FileOutputStream(f);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(korisnici);
@@ -38,11 +38,26 @@ public class Korisnici {
 	private void loadKorisnici(){
 		try{
 			korisnici.clear();
-			File f = new File(KORISNICI_DATOTEKA);
-			FileInputStream fos = new FileInputStream(f);
-			ObjectInputStream object = new ObjectInputStream(fos);
+			URL resource =null;
+			File f  = new File(KORISNICI_DATOTEKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				File direktorijum= new File("C:/WebShopVlada");
+				direktorijum.mkdir();
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/korisnici.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
+			}
 			korisnici = (ArrayList<Korisnik>) object.readObject();
 			object.close();
+			fis.close();
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -87,6 +102,19 @@ public class Korisnici {
 		for(Korisnik k :korisnici){
 			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
 				retVal =true;
+				break;
+			}
+		}
+		return retVal;
+	}
+	public boolean loginAdmin(String userName,String password){
+		boolean retVal =false;
+		for(Korisnik k :korisnici){
+			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
+				if(k.getUloga().equals(Uloga.menadzer))
+					retVal =true;
+				else
+					retVal=false;
 				break;
 			}
 		}

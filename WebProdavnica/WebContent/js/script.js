@@ -36,6 +36,28 @@ function Korisnik() {
 	        }
 		});
 	}
+	Korisnik.prototype.loginAdminKorisnika = function(usernameSelector, passwordSelector) {
+		this.korisnickoIme = $(usernameSelector).val();
+		this.lozinka = $(passwordSelector).val();
+		//setKorisnickoIme(usernameSelector);
+		//setLozinka(passwordSelector);
+		console.log(this.korisnickoIme + ' - ' + this.lozinka);
+		$.ajax({
+			dataType: 'json',
+			contentType: 'application/json',
+			mimeType: 'application/json',
+			url: 'LoginAdminServlet',
+			type: 'POST',
+			data: JSON.stringify(korisnik),
+			success: function(data) {
+				console.log(data);
+				window.location = data.url;
+			},
+			error: function(data,status,er) {
+	            alert("error: " + data + " status: " + status + " er:" + er);
+	        }
+		});
+	}
 }
 
 // create new instance of class Korisnik

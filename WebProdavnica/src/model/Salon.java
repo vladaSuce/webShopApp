@@ -17,7 +17,7 @@ public class Salon implements Serializable {
 	protected String maticniBroj;
 	protected String brojZiroRacuna;
 	
-	protected Salon(){}
+	public Salon(){}
 
 	public Salon(String naziv, String adresa, String telefon, String eMail,
 			String webPage, String pib, String maticniBroj,

@@ -5,12 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import model.Kategorija;
 
 public class Kategorije {
-	private static String KATEGORIJE_DATOTETKA="WebContent/datoteke/kategorije.dat";
+	private static String KATEGORIJE_DATOTETKA="/C:/WebShopVlada/kategorije.dat";
 	private static Kategorije instance;
 	protected ArrayList<Kategorija>kategorije;
 
@@ -29,13 +30,25 @@ public class Kategorije {
 	private void loadKategorije() {
 		try{
 			kategorije.clear();
-			File f = new File(KATEGORIJE_DATOTETKA);
-			if(!f.exists()){
-				f.createNewFile();
+			URL resource =null;
+			File f  = new File(KATEGORIJE_DATOTETKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/kategorije.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
 			}
-			FileInputStream fis = new FileInputStream(f);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			kategorije = (ArrayList<Kategorija>)ois.readObject();
+			
+			kategorije = (ArrayList<Kategorija>)object.readObject();
+			object.close();
+			fis.close();
 		}catch(Exception exp){
 			exp.printStackTrace();
 		}
