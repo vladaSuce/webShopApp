@@ -47,48 +47,53 @@ public class LoginUserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
+
 			response.setContentType("application/json"); 
 			HttpSession session = request.getSession();
-			// get received JSON data from request
-			BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-			String json = "";
-			if(br != null){
-				json = br.readLine();
-			}
-			// deserialize JOSN to Java object
-			System.out.println(json);
-			String[] parsiranstring = json.split(":");
-			for(int i=0;i< parsiranstring.length;i++){
-				System.out.println(i + "deo parsiranog string "+ parsiranstring[i]);
-			}
-			Gson gson = new GsonBuilder().create();
-			Korisnik korisnik = gson.fromJson(json, Korisnik.class);
-			WebProdavnica prodavnica = WebProdavnica.getInstance();
-			JsonObject result = new JsonObject();
-		
-			if(loginSucessfull(korisnik, prodavnica)){
-				// TODO: write some logic to check whether user exist or not, return statusCode other than 200 in response
-				
-				// put page name for redirection in result JSON
-				korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
-				session.setAttribute("user", korisnik);
-				Salon salon = prodavnica.getSalon();
-				session.setAttribute("salon", salon);
-				String urlToRedirect = "Home.jsp";
-				result.addProperty("url", urlToRedirect);
-			}
-			
 
+			Korisnik user =(Korisnik)session.getAttribute("user");
+			if(user!=null){
+				session.setAttribute("user", null);
+				response.sendRedirect("./");
+			}
 			else{
-				response.setStatus(404);
-			}
+				// get received JSON data from request
+				BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+				String json = "";
+				if(br != null){
+					json = br.readLine();
+				}
+				// deserialize JOSN to Java object
+				Gson gson = new GsonBuilder().create();
+				Korisnik korisnik = gson.fromJson(json, Korisnik.class);
+				WebProdavnica prodavnica = WebProdavnica.getInstance();
+				JsonObject result = new JsonObject();
 
-			
-			// put result into response
-			response.getWriter().write(result.toString());
+				if(loginSucessfull(korisnik, prodavnica)){
+					// TODO: write some logic to check whether user exist or not, return statusCode other than 200 in response
+
+					// put page name for redirection in result JSON
+					korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
+					session.setAttribute("user", korisnik);
+					Salon salon = prodavnica.getSalon();
+					session.setAttribute("salon", salon);
+					String urlToRedirect = "Home.jsp";
+					result.addProperty("url", urlToRedirect);
+				}
+
+
+				else{
+					response.setStatus(404);
+				}
+
+
+				// put result into response
+				response.getWriter().write(result.toString());
+			}
 		}catch(Exception exp){
 			throw new ServletException(exp);
 		}
+
 	}
 
 	protected boolean loginSucessfull(Korisnik korisnik, WebProdavnica prodavnica)

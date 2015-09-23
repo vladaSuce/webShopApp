@@ -24,7 +24,7 @@
 		<br />
 		<br />
 		<br />
-		<br /> <a href="logout.jsp">Logout</a>
+		<br /> <a href="./LoginUserServlet">Logout</a>
 	</center>
 </body>
 </html>
