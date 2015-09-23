@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import model.Kategorija;
 
 public class Kategorije {
-	private static String KATEGORIJE_DATOTETKA="/kategorije.dat";
+	private static String KATEGORIJE_DATOTETKA="/C:/WebShopVlada/kategorije.dat";
 	private static Kategorije instance;
 	protected ArrayList<Kategorija>kategorije;
 
@@ -30,12 +30,24 @@ public class Kategorije {
 	private void loadKategorije() {
 		try{
 			kategorije.clear();
-			URL resource = getClass().getClassLoader().getResource("/datoteke/kategorije.dat");
+			URL resource =null;
+			File f  = new File(KATEGORIJE_DATOTETKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/kategorije.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
+			}
 			
-			FileInputStream fis = new FileInputStream(resource.getPath());
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			kategorije = (ArrayList<Kategorija>)ois.readObject();
-			ois.close();
+			kategorije = (ArrayList<Kategorija>)object.readObject();
+			object.close();
 			fis.close();
 		}catch(Exception exp){
 			exp.printStackTrace();

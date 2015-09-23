@@ -27,11 +27,11 @@ public class WebProdavnica {
 	private static WebProdavnica instance;
 
 	public WebProdavnica(){
-		//usluge = DodatneUsluge.getInstance();
-		//kategorije = Kategorije.getInstance();
 		korisnici = Korisnici.getInstance();
 		salonRepo = SalonRepo.getInstance();
-		//namestaji = Namestaji.getInstance();
+		usluge = DodatneUsluge.getInstance();
+		kategorije = Kategorije.getInstance();
+		namestaji = Namestaji.getInstance();
 
 	}
 	public static WebProdavnica getInstance(){

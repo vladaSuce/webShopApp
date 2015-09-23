@@ -6,6 +6,7 @@ import repository.DodatneUsluge;
 import repository.Kategorije;
 import repository.Korisnici;
 import repository.Namestaji;
+import server.model.WebProdavnica;
 
 
 public class test {
@@ -36,6 +37,7 @@ public class test {
 //		Kategorija k = new Kategorija("Bastenski namestaj", "bambus");
 //		kat.addKategorija(k);
 		
-		Namestaji nam = Namestaji.getInstance();
+		WebProdavnica prodavnica= WebProdavnica.getInstance();
+		prodavnica.printKorisnici();
 	}
 }

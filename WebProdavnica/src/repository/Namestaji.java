@@ -14,7 +14,7 @@ import model.Namestaj;
 public class Namestaji {
 
 
-	private static String NAMESTAJ_DATOTETKA="namestaji.dat";
+	private static String NAMESTAJ_DATOTETKA="C:/WebShopVlada/namestaji.dat";
 	private static Namestaji instance;
 	protected ArrayList<Namestaj>namestaji;
 
@@ -34,12 +34,22 @@ public class Namestaji {
 	private void loadNamestaji() {
 		try{
 			namestaji.clear();
-			URL resource = getClass().getClassLoader().getResource("/datoteke/namestaji.dat");
-			
-			FileInputStream fis = new FileInputStream(resource.getPath());
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			namestaji = (ArrayList<Namestaj>)ois.readObject();
-			ois.close();
+			File f  = new File(NAMESTAJ_DATOTETKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+			URL resource=null;
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/namestaji.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
+			}
+			namestaji = (ArrayList<Namestaj>)object.readObject();
+			object.close();
 			fis.close();
 		}catch(Exception exp){
 			exp.printStackTrace();

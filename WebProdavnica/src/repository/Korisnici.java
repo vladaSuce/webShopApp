@@ -2,6 +2,7 @@ package repository;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -13,7 +14,7 @@ import model.Korisnik.Uloga;
 
 public class Korisnici {
 	public static Korisnici instance;
-	private static String KORISNICI_DATOTEKA="/korisnici.dat";
+	private static String KORISNICI_DATOTEKA="C:/WebShopVlada/korisnici.dat";
 	protected ArrayList<Korisnik>korisnici;
 	private Korisnici(){
 		korisnici = new ArrayList<Korisnik>();
@@ -22,14 +23,8 @@ public class Korisnici {
 
 	public void saveKorisnici(){
 		try{
-			File f = new File(KORISNICI_DATOTEKA);
 
-			if (!f.exists()){
-				f.createNewFile();
-			}
-			System.out.println(f.getPath()+"---path");
-			System.out.println(f.getAbsolutePath()+"---getAbsolutePath");
-			System.out.println(f.getCanonicalPath()+"---getCanonicalPath");
+			File f = new File(KORISNICI_DATOTEKA);
 			FileOutputStream fos = new FileOutputStream(f);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(korisnici);
@@ -43,9 +38,23 @@ public class Korisnici {
 	private void loadKorisnici(){
 		try{
 			korisnici.clear();
-			URL resource = getClass().getClassLoader().getResource("/datoteke/korisnici.dat");
-			FileInputStream fis = new FileInputStream(resource.getPath());
-			ObjectInputStream object = new ObjectInputStream(fis);
+			URL resource =null;
+			File f  = new File(KORISNICI_DATOTEKA);
+			FileInputStream fis = null;
+			ObjectInputStream object = null;
+
+			try{
+				fis= new FileInputStream(f);
+				object = new ObjectInputStream(fis);
+
+			}catch(Exception exp){
+				File direktorijum= new File("C:/WebShopVlada");
+				direktorijum.mkdir();
+				f.createNewFile();	
+				resource = getClass().getClassLoader().getResource("./datoteke/korisnici.dat");
+				fis= new FileInputStream(resource.getPath());
+				object = new ObjectInputStream(fis);
+			}
 			korisnici = (ArrayList<Korisnik>) object.readObject();
 			object.close();
 			fis.close();

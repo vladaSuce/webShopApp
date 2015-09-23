@@ -37,10 +37,10 @@ function Korisnik() {
 		});
 	}
 	Korisnik.prototype.loginAdminKorisnika = function(usernameSelector, passwordSelector) {
-		//this.korisnickoIme = $(usernameSelector).val();
-		//this.lozinka = $(passwordSelector).val();
-		setKorisnickoIme(usernameSelector);
-		setLozinka(passwordSelector);
+		this.korisnickoIme = $(usernameSelector).val();
+		this.lozinka = $(passwordSelector).val();
+		//setKorisnickoIme(usernameSelector);
+		//setLozinka(passwordSelector);
 		console.log(this.korisnickoIme + ' - ' + this.lozinka);
 		$.ajax({
 			dataType: 'json',
