@@ -66,25 +66,23 @@ public class LoginUserServlet extends HttpServlet {
 			WebProdavnica prodavnica = WebProdavnica.getInstance();
 			JsonObject result = new JsonObject();
 		
-//			if(loginSucessfull(korisnik, prodavnica)){
-//				// TODO: write some logic to check whether user exist or not, return statusCode other than 200 in response
-//				
-//				// put page name for redirection in result JSON
-//				korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
-//				session.setAttribute("user", korisnik);
-//				Salon salon = prodavnica.getSalon();
-//				session.setAttribute("salon", salon);
-//				String urlToRedirect = "Home.jsp";
-//				result.addProperty("url", urlToRedirect);
-//			}
-//			
-//
-//			else{
-//				response.setStatus(404);
-//			}
-			korisnik.setUloga(Uloga.kupac);
-		//	prodavnica.addKorisnik(korisnik);
-			prodavnica.printKorisnici();
+			if(loginSucessfull(korisnik, prodavnica)){
+				// TODO: write some logic to check whether user exist or not, return statusCode other than 200 in response
+				
+				// put page name for redirection in result JSON
+				korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
+				session.setAttribute("user", korisnik);
+				Salon salon = prodavnica.getSalon();
+				session.setAttribute("salon", salon);
+				String urlToRedirect = "Home.jsp";
+				result.addProperty("url", urlToRedirect);
+			}
+			
+
+			else{
+				response.setStatus(404);
+			}
+
 			
 			// put result into response
 			response.getWriter().write(result.toString());
