@@ -16,9 +16,11 @@
 	<br />
 	<center>
 		<h2>
-			<c:out value="${ korisnik.getKorisnickoIme() }"/>
+			<c:out value="${ user.getKorisnickoIme() }"/>
 		</h2>
-		<br /> <br /> <br />
+		<br /> 
+		<c:out value="${ salon.naziv }"/>
+		<br /> <br />
 		<br />
 		<br />
 		<br />
