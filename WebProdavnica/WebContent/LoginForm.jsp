@@ -11,7 +11,7 @@
 
 	<script src="<c:url value="lib/js/jquery-2.1.4.js" />"></script>
 	<script src="<c:url value="lib/css/bootstrap/js/bootstrap.js" />"></script>
-	<script src="<c:url value="js/script.js" />"></script>
+	<script src="<c:url value="js/korisnik.js" />"></script>
 
 <title>Logovanje korisnika</title>
 </head>
@@ -27,18 +27,18 @@
             <div class="col-sm-6 col-sm-offset-3 login-form-box">
                 <form role="form" onsubmit="korisnik.loginKorisnika('#usernameLogin', '#passwordLogin'); return false;">
                     <div class="form-group text-center">
-                        <h2>Signup Details</h2>
+                        <h2>Korisnicki detalji</h2>
                     </div>
                     <div class="form-group">
-                        <label class="standard-text" for="usernameLogin">Username:</label>
-                        <input type="text" name="username" placeholder="Username..." id="usernameLogin" class="form-control form-username">
+                        <label class="standard-text" for="usernameLogin">Korisnicko ime:</label>
+                        <input type="text" name="username" placeholder="Korisnicko ime..." id="usernameLogin" class="form-control form-username">
                     </div>
                     <div class="form-group">
-                        <label class="standard-text" for="passwordLogin">Password:</label>
-                        <input type="password" name="password" placeholder="Password..." id="passwordLogin" class="form-control form-password">
+                        <label class="standard-text" for="passwordLogin">Sifra:</label>
+                        <input type="password" name="password" placeholder="Sifra..." id="passwordLogin" class="form-control form-password">
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" name="submit" class="btn">Sign in!</button>
+                        <button type="submit" name="submit" class="btn">Login</button>
                     </div>
                 </form>
             </div>

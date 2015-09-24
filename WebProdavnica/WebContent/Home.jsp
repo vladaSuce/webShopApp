@@ -4,7 +4,7 @@
 <head>
 	<script src="<c:url value="/lib/js/jquery-2.1.4.js" />"></script>
 	<script src="<c:url value="/lib/css/bootstrap/js/bootstrap.js" />"></script>
-	<script src="<c:url value="/js/script.js" />"></script>
+	<script src="<c:url value="/js/korisnik.js" />"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JSP Page</title>
 </head>

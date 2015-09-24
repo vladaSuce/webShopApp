@@ -1,30 +1,31 @@
 /**
  * 
  */
+
 function Kategorija(){
 	this.naziv;
 	this.opis;
 	this.podKategorija;
 	
-	Kategorija.prototype.setNaziv(naziv){
+	Kategorija.prototype.setNaziv = function(naziv) {
 		this.naziv=naziv;
 	}
-	Kategorija.prototype.getNaziv(){
+	Kategorija.prototype.getNaziv = function() {
 		return this.naziv;
 	}
-	Kategorija.prototype.setOpis(opis){
+	Kategorija.prototype.setOpis = function(opis) {
 		this.opis = opis;
 	}
-	Kategorija.prototype.getOpis(){
+	Kategorija.prototype.getOpis = function() {
 		return this.opis;
 	}
-	Kategorija.prototype.setPodKategorija(podKategorija){
+	Kategorija.prototype.setPodKategorija = function(podKategorija) {
 		this.podKategorija= podKategorija;
 	}
-	Kategorija.prototype.getPodKategorija(){
+	Kategorija.prototype.getPodKategorija = function() {
 		return this.podKategorija;
 	}
-	Kategorija.prototype.fillData(naziv,opis,podKategorija,servlet){
+	Kategorija.prototype.fillData = function(naziv,opis,podKategorija,servlet) {
 		setNaziv(naziv);
 		setOpis(opis);
 		setPodKategorija(podKategorija);
@@ -45,4 +46,4 @@ function Kategorija(){
 		});
 	}
 }
-var kategorija = new Kategorija()
+var kategorija = new Kategorija();

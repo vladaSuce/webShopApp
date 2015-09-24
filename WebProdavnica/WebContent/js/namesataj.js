@@ -24,45 +24,45 @@ function Namestaj() {
 	Namestaj.prototype.setNaziv = function(naziv) {
 		this.naziv=naziv;
 	}
-	Namestaj.prototype.getBoja = function(){
+	Namestaj.prototype.getBoja = function() {
 		return this.boja;
 	}
-	Namestaj.prototype.setBoja = function(boja){
+	Namestaj.prototype.setBoja = function(boja) {
 		this.boja=boja;
 	}
-	Namestaj.prototype.getZemljaProizvodnje  = function (){
+	Namestaj.prototype.getZemljaProizvodnje  = function() {
 		return this.zemljaProizvodnje;
 	}
-	Namestaj.prototype.setZemljaProizvodnje  = function (zemljaProizvodnje){
+	Namestaj.prototype.setZemljaProizvodnje  = function(zemljaProizvodnje) {
 		this.zemljaProizvodnje=zemljaProizvodnje;
 	}
-	Namestaj.prototype.getNazivProizvodjaca = function (){
+	Namestaj.prototype.getNazivProizvodjaca = function() {
 		return this.nazivProizvodjaca;
 	}
-	Namestaj.prototype.setNazivProizvodjaca = function (nazivProizvodjaca){
+	Namestaj.prototype.setNazivProizvodjaca = function(nazivProizvodjaca) {
 		this.nazivProizvodjaca=nazivProizvodjaca;
 	}
-	Namestaj.prototype.getJedinicnaCena = function (){
+	Namestaj.prototype.getJedinicnaCena = function() {
 		return this.jedinicnaCena;
 	}
-	Namestaj.prototype.setJedinicnaCena = function (jedinicnaCena){
+	Namestaj.prototype.setJedinicnaCena = function(jedinicnaCena){
 		this.jedinicnaCena=jedinicnaCena;
 	}
-	Namestaj.prototype.getKolicinaUMagacinu = function (){
+	Namestaj.prototype.getKolicinaUMagacinu = function() {
 		return this.kolicinaUMagacinu;
 	}
-	Namestaj.prototype.setKolicinaUMagacinu = function (kolicinaUMagacinu){
+	Namestaj.prototype.setKolicinaUMagacinu = function(kolicinaUMagacinu) {
 		this.kolicinaUMagacinu=kolicinaUMagacinu;
 	}
-	Namestaj.prototype.getGodinaProizvodnje = function (){
+	Namestaj.prototype.getGodinaProizvodnje = function() {
 		return this.godinaProizvodnje;
 	}
-	Namestaj.prototype.setGodinaProizvodnje = function (godinaProizvodnje){
+	Namestaj.prototype.setGodinaProizvodnje = function(godinaProizvodnje) {
 		this.godinaProizvodnje=godinaProizvodnje;
 	}
 	
 	
-	Namestaj.prototype.collectData = function(	asifra,anaziv,aboja,azemljaProizvodnje,anazivProizvodjaca
+	Namestaj.prototype.collectData = function(asifra,anaziv,aboja,azemljaProizvodnje,anazivProizvodjaca
 												,ajedinicnaCena,akolicinaUMagacinu,agodinaProizvodnje) {
 		setBoja(aboja);
 		setGodinaProizvodnje(agodinaProizvodnje);

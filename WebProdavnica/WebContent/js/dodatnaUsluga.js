@@ -6,25 +6,25 @@ function DodatnaUsluga(){
 	this.opis;
 	this.cena;
 
-	DodatnaUsluga.prototype.setNaziv(naziv){
+	DodatnaUsluga.prototype.setNaziv = function(naziv) {
 		this.naziv = naziv;
 	}	
-	DodatnaUsluga.prototype.getNaziv(){
+	DodatnaUsluga.prototype.getNaziv = function() {
 		return this.naziv;
 	}
-	DodatnaUsluga.prototype.setOpis(opis){
+	DodatnaUsluga.prototype.setOpis = function(opis) {
 		this.opis = opis;
 	}
-	DodatnaUsluga.prototype.getOpis(){
+	DodatnaUsluga.prototype.getOpis = function() {
 		return this.opis;
 	}
-	DodatnaUsluga.prototype.setCena(cena){
+	DodatnaUsluga.prototype.setCena = function(cena) {
 		this.cena = cena;
 	}
-	DodatnaUsluga.prototype.getCena(){
+	DodatnaUsluga.prototype.getCena = function() {
 		return this.cena;
 	}
-	DodatnaUsluga.prototype.fillData(naziv,opis,cena,servlet){
+	DodatnaUsluga.prototype.fillData = function(naziv,opis,cena,servlet) {
 		setNaziv(naziv);
 		setCena(cena);
 		setOpis(opis);
