@@ -127,11 +127,35 @@ public class Namestaji {
 	}
 
 
+	public ArrayList<Namestaj> getNamestaji() {
+		return namestaji;
+	}
+
+
+	public void setNamestaji(ArrayList<Namestaj> namestaji) {
+		this.namestaji = namestaji;
+	}
+
+
 	public static Namestaji getInstance(){
 		if(instance!=null){
 			return instance;
 		}
 		else
 			return new Namestaji();
+	}
+
+
+	public ArrayList<Namestaj> getNamestajiByNazivKategorije(
+			String nazivKategorije) {
+		ArrayList<Namestaj> retVal =  new ArrayList<Namestaj>();
+		System.out.println(namestaji);
+		for(Namestaj n : namestaji){
+			//if(n.getKategorija().getNaziv().equals(nazivKategorije)|| (n.getKategorija().getPodKategorija().equals(nazivKategorije))){
+			if(n.getKategorija().getNaziv().equals(nazivKategorije)){
+				retVal.add(n);
+			}
+		}
+		return retVal;
 	}
 }
