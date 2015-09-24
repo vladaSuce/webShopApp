@@ -36,6 +36,7 @@
                         <input type="password" name="password" placeholder="Password..." id="passwordLogin" class="form-control form-password">
                     </div>
                     <button type="submit" name="submit" class="btn">Sign in!</button>
+                    <span class="btn"><a href="./AdminLogin.jsp"/>Logovanje menadzera(admina)</span>
                 </form>
             </div>
         </div>
