@@ -20,13 +20,15 @@
     <div class="container">
         <div class="row">
             <div class="text-center">
-                <h1>Login Page</h1>
-                <h2>Signup Details</h2>
+                <span class="btn app-btn-login pull-right"><a class="app-no-link" href="./AdminLogin.jsp">Logovanje menadzera(admina)</a></span>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 login-form-box">
                 <form role="form" onsubmit="korisnik.loginKorisnika('#usernameLogin', '#passwordLogin'); return false;">
+                    <div class="form-group text-center">
+                        <h2>Signup Details</h2>
+                    </div>
                     <div class="form-group">
                         <label class="standard-text" for="usernameLogin">Username:</label>
                         <input type="text" name="username" placeholder="Username..." id="usernameLogin" class="form-control form-username">
@@ -35,25 +37,13 @@
                         <label class="standard-text" for="passwordLogin">Password:</label>
                         <input type="password" name="password" placeholder="Password..." id="passwordLogin" class="form-control form-password">
                     </div>
-                    <button type="submit" name="submit" class="btn">Sign in!</button>
-                    <span class="btn"><a href="./AdminLogin.jsp"/>Logovanje menadzera(admina)</span>
+                    <div class="form-group text-center">
+                        <button type="submit" name="submit" class="btn">Sign in!</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-	<%--<h1>Login Page</h1>
-	<center>
-		<h2>Signup Details</h2>
-		<form onsubmit="korisnik.loginKorisnika('#usernameLogin', '#passwordLogin'); return false;">
-			<br />Username:<input type="text" id="usernameLogin" name="username"> 
-			<br />Password:<input type="password" id="passwordLogin" name="password"> 
-			<br /><input type="submit" name="submit" value="Submit"> 
-			<br/> <a href="./AdminLogin.jsp">Logovanje menadzera(admina)</a>
-		</form>
-	</center>--%>
-
 
 </body>
 </html>

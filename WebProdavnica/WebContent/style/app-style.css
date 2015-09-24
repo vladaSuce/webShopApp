@@ -1,4 +1,14 @@
 .login-form-box {
     border: 1px solid gray;
     border-radius: 4px;
+    margin-top: 20%;
+}
+
+.app-no-link:hover {
+    text-decoration: none;
+}
+
+.app-btn-login {
+    background-color: #DDD;
+    margin-top: 20px;
 }
