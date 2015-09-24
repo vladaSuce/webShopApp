@@ -120,6 +120,14 @@ public class DodatneUsluge {
 	}
 
 
+	public ArrayList<DodatnaUsluga> getUsluge() {
+		return usluge;
+	}
+
+	public void setUsluge(ArrayList<DodatnaUsluga> usluge) {
+		this.usluge = usluge;
+	}
+
 	public static DodatneUsluge getInstance(){
 		if(instance!=null){
 			return instance;
