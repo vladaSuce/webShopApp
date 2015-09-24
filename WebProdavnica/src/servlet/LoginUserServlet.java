@@ -1,20 +1,29 @@
 package servlet;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import model.Korisnik;
-import model.Salon;
-import server.model.WebProdavnica;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import server.model.WebProdavnica;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import model.Kategorija;
+import model.Korisnik;
+import model.Korisnik.Uloga;
+import model.Namestaj;
+import model.Salon;
 
 /**
  * Servlet implementation class LoginUserServlet
@@ -43,7 +52,8 @@ public class LoginUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 
-			response.setContentType("application/json");
+			response.setContentType("application/json"); 
+			
 			HttpSession session = request.getSession();
 			System.out.println("");
 			Korisnik user =(Korisnik)session.getAttribute("user");
@@ -72,8 +82,13 @@ public class LoginUserServlet extends HttpServlet {
 					session.setAttribute("user", korisnik);
 					Salon salon = prodavnica.getSalon();
 					session.setAttribute("salon", salon);
+					ArrayList<Kategorija> kategorije =  prodavnica.getAllKategorije();
+					session.setAttribute("kategorije", kategorije);
+					ArrayList<Namestaj> namestaji = prodavnica.getAllNamestaj();
+					session.setAttribute("namestaji", namestaji);
 					String urlToRedirect = "Home.jsp";
 					result.addProperty("url", urlToRedirect);
+				//	result.add("type", "POST");
 				}
 
 
@@ -83,7 +98,10 @@ public class LoginUserServlet extends HttpServlet {
 
 
 				// put result into response
+//				System.out.println(result.toString());
 				response.getWriter().write(result.toString());
+				
+				
 			}
 		}catch(Exception exp){
 			throw new ServletException(exp);

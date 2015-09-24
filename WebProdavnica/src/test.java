@@ -2,6 +2,7 @@ import model.DodatnaUsluga;
 import model.Kategorija;
 import model.Korisnik;
 import model.Korisnik.Uloga;
+import model.Namestaj;
 import repository.DodatneUsluge;
 import repository.Kategorije;
 import repository.Korisnici;
@@ -38,6 +39,30 @@ public class test {
 //		kat.addKategorija(k);
 		
 		WebProdavnica prodavnica= WebProdavnica.getInstance();
-		prodavnica.printKorisnici();
+		Namestaj n = new Namestaj();
+		n.setBoja("Braon");
+		n.setGodinaProizvodnje(2015);
+		n.setKategorija(prodavnica.loadKategorija("Dnevne sobe"));
+		n.setJedinicnaCena(72575);
+		n.setKolicinaUMagacinu(10);
+		n.setNaziv("MODULARNI SET: FRONTAL");
+		n.setSalon(prodavnica.getSalon());
+		n.setNazivProizvodjaca("vitorog");
+		n.setSifra("00402");
+		prodavnica.addNmestaj(n);
+		prodavnica.printNamestaj();
+		prodavnica.printKategorije();
+//		DodatnaUsluga dod =  new DodatnaUsluga();
+//		dod.setNaziv("Izrada posebnog stofa");
+//		dod.setOpis("Troskovi izrade stofa koji je van stof karte");
+//		dod.setCena(3000);
+//		prodavnica.printDodUSL();//(dod);
+//		Kategorija k = new Kategorija();
+//		k.setNaziv("Dnevne sobe");
+//		k.setOpis("");
+	//	prodavnica.dodajKategoriju(k);
+//		prodavnica.removeKorisnik(prodavnica.loadKorisnik("vlada"));
+		//prodavnica.removeKorisnik(prodavnica.loadKorisnik("nela"));
+//		prodavnica.removeKorisnik(prodavnica.loadKorisnik("nela"));
 	}
 }

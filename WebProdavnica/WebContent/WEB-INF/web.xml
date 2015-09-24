@@ -142,7 +142,7 @@
     <servlet-name>PretragaNamestajaServlet</servlet-name>
     <url-pattern>/PretragaNamestajaServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>LoginAdminServlet</display-name>
     <servlet-name>LoginAdminServlet</servlet-name>
@@ -151,5 +151,15 @@
   <servlet-mapping>
     <servlet-name>LoginAdminServlet</servlet-name>
     <url-pattern>/LoginAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>KategorijaNamestajServlet</display-name>
+    <servlet-name>KategorijaNamestajServlet</servlet-name>
+    <servlet-class>servlet.KategorijaNamestajServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KategorijaNamestajServlet</servlet-name>
+    <url-pattern>/KategorijaNamestajServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -42,6 +42,9 @@ public class WebProdavnica {
 			return new WebProdavnica();
 	}
 
+	public synchronized Kategorija loadKategorija(String katNaziv) throws Exception{
+		return kategorije.loadKategorija(katNaziv);
+	}
 	public synchronized void dodajKategoriju(Kategorija kat) throws Exception{
 		kategorije.addKategorija(kat);
 	}
@@ -146,4 +149,40 @@ public class WebProdavnica {
 			System.out.println("korisnik :"+i+" "+korisnici.getAllKorisnik().get(i));
 		}
 	}
+	public synchronized void printKategorije(){
+		if(kategorije!=null){
+			for(int i =0;i<kategorije.getAllKategorija().size();i++){
+				System.out.println("kategorija :"+i+" "+kategorije.getAllKategorija().get(i));
+			}
+		}
+
+	}
+	public synchronized void printDodUSL(){
+		if(usluge!=null){
+			for(int i =0;i<usluge.getUsluge().size();i++){
+				System.out.println("usluga :"+i+" "+usluge.getUsluge().get(i));
+			}
+		}
+
+	}
+
+	public synchronized void printNamestaj(){
+		if(namestaji!=null){
+			for(int i =0;i<namestaji.getNamestaji().size();i++){
+				System.out.println("namestaj :"+i+" "+namestaji.getNamestaji().get(i));
+			}
+		}
+
+	}
+	public synchronized ArrayList<Kategorija>getAllKategorije(){
+		return kategorije.getAllKategorija();
+	}
+	
+	public synchronized ArrayList<Namestaj>getAllNamestaj(){
+		return namestaji.getNamestaji();
+	}
+	public synchronized ArrayList<Namestaj>getNamestajByKategorija(String nazivKategorije){
+		return namestaji.getNamestajiByNazivKategorije(nazivKategorije);
+	}
+
 }
