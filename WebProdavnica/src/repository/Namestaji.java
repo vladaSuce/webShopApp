@@ -149,7 +149,6 @@ public class Namestaji {
 	public ArrayList<Namestaj> getNamestajiByNazivKategorije(
 			String nazivKategorije) {
 		ArrayList<Namestaj> retVal =  new ArrayList<Namestaj>();
-		System.out.println(namestaji);
 		for(Namestaj n : namestaji){
 			//if(n.getKategorija().getNaziv().equals(nazivKategorije)|| (n.getKategorija().getPodKategorija().equals(nazivKategorije))){
 			if(n.getKategorija().getNaziv().equals(nazivKategorije)){
