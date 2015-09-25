@@ -6,8 +6,12 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import model.Namestaj;
 import model.Racun;
 
 public class Racuni {
@@ -87,5 +91,40 @@ public class Racuni {
 		}
 		else
 			return new Racuni();
+	}
+
+	public ArrayList<Racun> getProdajaOdDo(String datumOd, String datumDo) throws ParseException {
+		ArrayList<Racun>retVal =  new ArrayList<Racun>();
+		for(Racun r:racuni){
+			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); 
+			Date datumRacuna = format.parse(r.getDatumVreme());
+			Date datumod = format.parse(datumOd);
+			Date datumdo = format.parse(datumDo);
+			if((datumRacuna.compareTo(datumod)>=0)&&(datumRacuna.compareTo(datumdo)<=0)){
+				retVal.add(r);
+			}
+		}
+		return retVal;
+	}
+	public ArrayList<Racun> getProdajaOdDoKategorija(String datumOd, String datumDo,String kategorija) throws ParseException {
+		ArrayList<Racun>racunifilter =  new ArrayList<Racun>();
+		for(Racun r:racuni){
+			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); 
+			Date datumRacuna = format.parse(r.getDatumVreme());
+			Date datumod = format.parse(datumOd);
+			Date datumdo = format.parse(datumDo);
+			if((datumRacuna.compareTo(datumod)>=0)&&(datumRacuna.compareTo(datumdo)<=0)){
+				racunifilter.add(r);
+			}
+		}
+		for(Racun r:racunifilter){
+			for(Namestaj namestaj : r.getListaNamestaja()){
+				if(!namestaj.getKategorija().equals(kategorija)){
+					racunifilter.remove(r);
+					break;
+				}
+			}
+		}
+		return racunifilter;
 	}
 }

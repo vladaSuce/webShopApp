@@ -197,4 +197,10 @@ public class WebProdavnica {
 	public ArrayList<Racun>getProdajaPoDanu(String datum) throws Exception{
 		return racuni.loadRacunByDatum(datum);
 	}
+	public ArrayList<Racun>getProdajaOdDo(String datumOd,String datumDo) throws Exception{
+		return racuni.getProdajaOdDo(datumOd,datumDo);
+	}
+	public ArrayList<Racun>getProdajaOdDo(String datumOd,String datumDo,String kategorija) throws Exception{
+		return racuni.getProdajaOdDoKategorija(datumOd, datumDo, kategorija);
+	}
 }
