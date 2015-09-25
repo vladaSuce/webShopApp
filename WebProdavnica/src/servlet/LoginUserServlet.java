@@ -3,7 +3,10 @@ package servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +26,7 @@ import model.Kategorija;
 import model.Korisnik;
 import model.Korisnik.Uloga;
 import model.Namestaj;
+import model.Racun;
 import model.Salon;
 
 /**
@@ -81,11 +85,23 @@ public class LoginUserServlet extends HttpServlet {
 					korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
 					session.setAttribute("user", korisnik);
 					Salon salon = prodavnica.getSalon();
+					if(korisnik.getUloga().equals(Uloga.kupac)){
+						Racun korpa = new Racun();
+						korpa.setKupac(korisnik);
+						korpa.setListaNamestaja(new ArrayList<Namestaj>());
+						String pattern = "yyyy/MM/dd HH:mm:ss";
+					    SimpleDateFormat format = new SimpleDateFormat(pattern);
+					    Calendar cal = Calendar.getInstance();
+					    String datumVreme = format.format(cal.getTime());
+					    format = new SimpleDateFormat("dd/MM/yyyy");
+					    String datum = format.format(cal.getTime());
+						korpa.setDatumVreme(datumVreme);
+						korpa.setDatumKupovine(datum);
+						session.setAttribute("korpa", korpa);
+					}
 					session.setAttribute("salon", salon);
 					ArrayList<Kategorija> kategorije =  prodavnica.getAllKategorije();
 					session.setAttribute("kategorije", kategorije);
-					ArrayList<Namestaj> namestaji = prodavnica.getAllNamestaj();
-					session.setAttribute("namestaji", namestaji);
 					String urlToRedirect = "Home.jsp";
 					result.addProperty("url", urlToRedirect);
 				//	result.add("type", "POST");

@@ -13,6 +13,7 @@ public class Racun implements Serializable {
 	protected double porez;
 	protected double ukupnaCena;
 	protected String datumVreme;
+	protected String datumKupovine;
 	protected Korisnik kupac;
 	
 	public Racun(){}
@@ -64,6 +65,15 @@ public class Racun implements Serializable {
 
 	public void setKupac(Korisnik kupac) {
 		this.kupac = kupac;
+	}
+	
+	
+	public String getDatumKupovine() {
+		return datumKupovine;
+	}
+
+	public void setDatumKupovine(String datumKupovine) {
+		this.datumKupovine = datumKupovine;
 	}
 
 	@Override

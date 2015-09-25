@@ -7,11 +7,13 @@ import model.Kategorija;
 import model.Korisnik;
 import model.ModelPretrageDTO;
 import model.Namestaj;
+import model.Racun;
 import model.Salon;
 import repository.DodatneUsluge;
 import repository.Kategorije;
 import repository.Korisnici;
 import repository.Namestaji;
+import repository.Racuni;
 import repository.SalonRepo;
 import repository.TipPretrageNamestaja;
 
@@ -24,6 +26,7 @@ public class WebProdavnica {
 	private Korisnici korisnici ;
 	private Namestaji namestaji ;	
 	private SalonRepo salonRepo;
+	private Racuni racuni;
 	private static WebProdavnica instance;
 
 	public WebProdavnica(){
@@ -32,6 +35,7 @@ public class WebProdavnica {
 		usluge = DodatneUsluge.getInstance();
 		kategorije = Kategorije.getInstance();
 		namestaji = Namestaji.getInstance();
+		racuni = Racuni.getInstance();
 
 	}
 	public static WebProdavnica getInstance(){
@@ -184,5 +188,13 @@ public class WebProdavnica {
 	public synchronized ArrayList<Namestaj>getNamestajByKategorija(String nazivKategorije){
 		return namestaji.getNamestajiByNazivKategorije(nazivKategorije);
 	}
-
+	public synchronized ArrayList<Racun>getAllRacuni(){
+		return racuni.getRacuni();
+	}
+	public synchronized void addRacun(Racun r) throws Exception{
+		racuni.addRacun(r);
+	}
+	public ArrayList<Racun>getProdajaPoDanu(String datum) throws Exception{
+		return racuni.loadRacunByDatum(datum);
+	}
 }
