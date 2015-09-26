@@ -23,10 +23,10 @@ public class AkcijskiNamestaj extends Namestaj {
 	public AkcijskiNamestaj(Salon salon, Kategorija kategorija, String sifra,
 			String naziv, String boja, String zemljaProizvodnje,
 			String nazivProizvodjaca, double jedinicnaCena,
-			int kolicinaUMagacinu, int godinaProizvodnje, byte[] multimedia) {
+			int kolicinaUMagacinu, int godinaProizvodnje, String linkSlika,String linkVideo) {
 		super(salon, kategorija, sifra, naziv, boja, zemljaProizvodnje,
 				nazivProizvodjaca, jedinicnaCena, kolicinaUMagacinu, godinaProizvodnje,
-				multimedia);
+				linkSlika,linkVideo);
 		// TODO Auto-generated constructor stub
 	}
 	public String getDatumPocetka() {

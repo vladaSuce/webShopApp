@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import model.Kategorija;
+import model.Namestaj;
 
 public class Kategorije {
 	private static String KATEGORIJE_DATOTETKA="/C:/WebShopVlada/kategorije.dat";
@@ -20,14 +21,14 @@ public class Kategorije {
 		loadKategorije();
 	}
 
-	private void saveKategorije() throws Exception{
+	public void saveKategorije() throws Exception{
 		File f = new File(KATEGORIJE_DATOTETKA);
 		FileOutputStream fos = new FileOutputStream(f);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(kategorije);
 		oos.close();
 	}
-	private void loadKategorije() {
+	public void loadKategorije() {
 		try{
 			kategorije.clear();
 			URL resource =null;
@@ -50,7 +51,7 @@ public class Kategorije {
 			object.close();
 			fis.close();
 		}catch(Exception exp){
-			exp.printStackTrace();
+			kategorije =  new ArrayList<Kategorija>();
 		}
 	}
 	public void addKategorija(Kategorija kategorija) throws Exception{
@@ -58,27 +59,53 @@ public class Kategorije {
 			if(kat.equals(kategorija))
 			 throw new Exception("Kategorija sa nazivom:  "+kategorija.getNaziv() + " vec postoji u sistemu" );
 		}
+		if(kategorija.getNadKategorija()!=null && (!kategorija.getNadKategorija().trim().equals(""))){
+			boolean nadjenPredak = false;
+			for(Kategorija kat : kategorije){
+				if(kategorija.getNadKategorija().equals(kat.getNaziv())){
+					nadjenPredak = true;
+					if(kat.getPodKategorije()==null)
+						kat.setPodKategorije(new ArrayList<String>());
+					kat.getPodKategorije().add(kategorija.getNaziv());
+					editKategorija(kat);
+					break;
+				}
+			}
+			if(!nadjenPredak)
+				throw new Exception("Nije pronadjen predak: "+kategorija.getNadKategorija()+" za kategoriju "+kategorija.getNaziv());
+		}
+		loadKategorije();
 		kategorije.add(kategorija);
 		saveKategorije();
 	}
-	public void removeKategorija(String nazivKategorije) throws Exception{
+	public synchronized void  removeKategorija(String nazivKategorije) throws Exception{
 		Kategorija kategorija = loadKategorija(nazivKategorije);
+		for(Namestaj n : Namestaji.getInstance().namestaji){
+			if(n.getKategorija().equals(kategorija)){
+				n.setKategorija(null);
+				Namestaji.getInstance().editNamestaj(n);
+			}
+				
+		}
 		for(Kategorija kategorijaTemp : kategorije){
-			if (kategorijaTemp.equals(kategorija)){
+			if(kategorijaTemp.getNadKategorija().equals(kategorija.getNaziv())){
+				if(kategorijaTemp.getPodKategorije()!=null)
+					removeKategorija(kategorijaTemp.getNaziv());
 				kategorije.remove(kategorijaTemp);
-				saveKategorije();
-				break;
 			}
 		}
+		kategorije.remove(kategorija);
+		saveKategorije();
 	}
 	public void editKategorija(Kategorija novaKategorija) throws Exception{
 		for(Kategorija kategorija : kategorije){
 			if (kategorija.equals(novaKategorija)){
 				kategorije.remove(kategorija);
 				kategorije.add(novaKategorija);
-				saveKategorije();
+				break;
 			}
 		}
+		saveKategorije();
 	}
 
 	public Kategorija loadKategorija(String nazivKategorije) throws Exception {
@@ -102,7 +129,26 @@ public class Kategorije {
 		else
 			return new Kategorije();
 	}
-	public ArrayList<Kategorija> getAllKategorija(){
+	public ArrayList<Kategorija> getAllRootKategorija(){
+		ArrayList<Kategorija> retVal = new ArrayList<Kategorija>();
+		for(Kategorija kat : kategorije){
+			if(kat.getNadKategorija()==null || kat.getNadKategorija().trim().equals("")){
+				retVal.add(kat);
+			}
+		}
+		return retVal;
+	}
+	public ArrayList<Kategorija>getAllKategorija(){
 		return kategorije;
+	}
+
+	public ArrayList<Kategorija> getAllPodKategorije(String nazivNadKategorije) {
+		ArrayList<Kategorija> retVal = new ArrayList<Kategorija>();
+		for(Kategorija kat : kategorije){
+			if(kat.getNadKategorija()!=null && (!kat.getNadKategorija().trim().equals(""))&& kat.getNadKategorija().equals(nazivNadKategorije)){
+				retVal.add(kat);
+			}
+		}
+		return retVal;
 	}
 }

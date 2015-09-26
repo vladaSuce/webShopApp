@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Kategorija implements Serializable {
 	/**
@@ -9,18 +10,26 @@ public class Kategorija implements Serializable {
 	private static final long serialVersionUID = 6644945537089463016L;
 	protected String naziv;
 	protected String opis;
-	protected String podKategorija;
+	protected String nadKategorija;
+	protected ArrayList<String> podKategorije;
 	public Kategorija(){}
 	public Kategorija(String naziv, String opis) {
 		super();
 		this.naziv = naziv;
 		this.opis = opis;
 	}
-	public Kategorija(String naziv, String opis, String podKategorija) {
+	public Kategorija(String naziv, String opis, String nadKategorija) {
 		super();
 		this.naziv = naziv;
 		this.opis = opis;
-		this.podKategorija = podKategorija;
+		this.nadKategorija = nadKategorija;
+	}
+	public Kategorija(String naziv, String opis, String nadKategorija,ArrayList<String> podKategorije) {
+		super();
+		this.naziv = naziv;
+		this.opis = opis;
+		this.nadKategorija = nadKategorija;
+		this.podKategorije = podKategorije;
 	}
 	public String getNaziv() {
 		return naziv;
@@ -34,16 +43,25 @@ public class Kategorija implements Serializable {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	public String getPodKategorija() {
-		return podKategorija;
+	public String getNadKategorija() {
+		return nadKategorija;
 	}
-	public void setPodKategorija(String podKategorija) {
-		this.podKategorija = podKategorija;
+	public void setNadKategorija(String nadKategorija) {
+		this.nadKategorija = nadKategorija;
 	}
+	
+	public ArrayList<String> getPodKategorije() {
+		return podKategorije;
+	}
+	public void setPodKategorije(ArrayList<String> podKategorije) {
+		this.podKategorije = podKategorije;
+	}
+
 	@Override
 	public String toString() {
 		return "Kategorija [naziv=" + naziv + ", opis=" + opis
-				+ ", podKategorija=" + podKategorija + "]";
+				+ ", nadKategorija=" + nadKategorija + ", podKategorije="
+				+ podKategorije + "]";
 	}
 	@Override
 	public boolean equals(Object obj) {

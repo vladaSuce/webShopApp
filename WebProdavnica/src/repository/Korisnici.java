@@ -59,7 +59,7 @@ public class Korisnici {
 			object.close();
 			fis.close();
 		} catch (Exception e){
-			e.printStackTrace();
+			korisnici = new ArrayList<Korisnik>();
 		}
 
 	}

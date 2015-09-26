@@ -55,7 +55,7 @@ public class Racuni {
 			object.close();
 			fis.close();
 		}catch(Exception exp){	
-			exp.printStackTrace();
+			racuni = new ArrayList<Racun>();
 		}
 	}
 	public void addRacun(Racun racun) throws Exception{

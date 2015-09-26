@@ -52,7 +52,7 @@ public class DodatneUsluge {
 			object.close();
 			fis.close();
 		}catch(Exception exp){	
-			exp.printStackTrace();
+			usluge = new ArrayList<DodatnaUsluga>();
 		}
 	}
 	public void addUsluga(DodatnaUsluga usluga) throws Exception{

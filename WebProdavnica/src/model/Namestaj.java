@@ -18,12 +18,13 @@ public class Namestaj implements Serializable {
 	protected double jedinicnaCena;
 	protected int kolicinaUMagacinu;
 	protected int godinaProizvodnje;
-	protected byte[] multimedia;
+	protected String linkSlika;
+	protected String linkVideo;
 	public Namestaj(){}
 	public Namestaj(Salon salon, Kategorija kategorija, String sifra,
 			String naziv, String boja, String zemljaProizvodnje,
 			String nazivProizvodjaca, double jedinicnaCena,
-			int kolicinaUMagacinu, int godinaProizvodnje, byte[] multimedia) {
+			int kolicinaUMagacinu, int godinaProizvodnje,String linkSlika,String linkVideo) {
 		super();
 		this.salon = salon;
 		this.kategorija = kategorija;
@@ -35,7 +36,8 @@ public class Namestaj implements Serializable {
 		this.jedinicnaCena = jedinicnaCena;
 		this.kolicinaUMagacinu = kolicinaUMagacinu;
 		this.godinaProizvodnje = godinaProizvodnje;
-		this.multimedia = multimedia;
+		this.linkSlika = linkSlika;
+		this.linkVideo = linkVideo;
 	}
 	public Salon getSalon() {
 		return salon;
@@ -97,11 +99,18 @@ public class Namestaj implements Serializable {
 	public void setGodinaProizvodnje(int godinaProizvodnje) {
 		this.godinaProizvodnje = godinaProizvodnje;
 	}
-	public byte[] getMultimedia() {
-		return multimedia;
+
+	public String getLinkSlika() {
+		return linkSlika;
 	}
-	public void setMultimedia(byte[] multimedia) {
-		this.multimedia = multimedia;
+	public void setLinkSlika(String linkSlika) {
+		this.linkSlika = linkSlika;
+	}
+	public String getLinkVideo() {
+		return linkVideo;
+	}
+	public void setLinkVideo(String linkVideo) {
+		this.linkVideo = linkVideo;
 	}
 	@Override
 	public String toString() {

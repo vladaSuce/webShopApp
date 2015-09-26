@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 
+import model.Kategorija;
 import model.ModelPretrageDTO;
 import model.Namestaj;
 
@@ -52,7 +53,7 @@ public class Namestaji {
 			object.close();
 			fis.close();
 		}catch(Exception exp){
-			exp.printStackTrace();
+			namestaji = new ArrayList<Namestaj>();
 		}
 	}
 
@@ -69,19 +70,22 @@ public class Namestaji {
 		for(Namestaj namestajTemp : namestaji){
 			if (namestajTemp.equals(namestaj)){
 				namestaji.remove(namestajTemp);
-				saveNamestaji();
+				
 				break;
 			}
 		}
+		saveNamestaji();
 	}
 	public void editNamestaj(Namestaj noviNamestaj) throws Exception{
 		for(Namestaj namestaj : namestaji){
 			if (namestaj.equals(noviNamestaj)){
 				namestaji.remove(namestaj);
 				namestaji.add(noviNamestaj);
-				saveNamestaji();
+				
+				break;
 			}
 		}
+		saveNamestaji();
 	}
 
 	public Namestaj loadNamestaj(String sifraNamestaja) throws Exception {
@@ -101,8 +105,8 @@ public class Namestaji {
 		switch(tipPretrage){
 		case (TipPretrageNamestaja.PRETRAGA_PO_NAZIVU):{
 			for (Namestaj n : namestaji){
-					if(n.getNaziv().toLowerCase().contains(info.getNaziv().toLowerCase()))
-						retVal.add(n);
+				if(n.getNaziv().toLowerCase().contains(info.getNaziv().toLowerCase()))
+					retVal.add(n);
 			}
 			return retVal;
 		}
@@ -110,19 +114,19 @@ public class Namestaji {
 			for (Namestaj n : namestaji){
 				if(n.getBoja().toLowerCase().equals(info.getBoja().toLowerCase()))
 					retVal.add(n);
-		}
-		return retVal;
+			}
+			return retVal;
 		}
 		case(TipPretrageNamestaja.PRETRAGA_PO_GODINI_PROIZVODNJE):{
 			for (Namestaj n : namestaji){
 				if(n.getGodinaProizvodnje()==info.getGodinaProizvodnje())
 					retVal.add(n);
-		}
-		return retVal;
+			}
+			return retVal;
 		}
 		default :{
 			throw new Exception("Neadekvatan tip pretrage!");
-			}
+		}
 		}
 	}
 
@@ -147,14 +151,32 @@ public class Namestaji {
 
 
 	public ArrayList<Namestaj> getNamestajiByNazivKategorije(
-			String nazivKategorije) {
+			String nazivKategorije) throws Exception {
 		ArrayList<Namestaj> retVal =  new ArrayList<Namestaj>();
 		for(Namestaj n : namestaji){
-			//if(n.getKategorija().getNaziv().equals(nazivKategorije)|| (n.getKategorija().getPodKategorija().equals(nazivKategorije))){
 			if(n.getKategorija().getNaziv().equals(nazivKategorije)){
 				retVal.add(n);
 			}
 		}
+		addPodKategorijaNamestaj(retVal,nazivKategorije);
+		
 		return retVal;
+	}
+
+
+	private void addPodKategorijaNamestaj(ArrayList<Namestaj> retVal,String naziv) throws Exception {
+			Kategorija kategoija = Kategorije.getInstance().loadKategorija(naziv);
+			if(kategoija.getPodKategorije()!=null && kategoija.getPodKategorije().size()>0){
+				for(String nazivPodkategorije : kategoija.getPodKategorije()){
+					addPodKategorijaNamestaj(retVal, nazivPodkategorije);
+				}
+			}
+			for(Namestaj namestaj : namestaji){
+				if(namestaj.getKategorija().getNaziv().equals(naziv)){
+					if(!retVal.contains(namestaj)){
+						retVal.add(namestaj);
+					}
+				}
+			}
 	}
 }
