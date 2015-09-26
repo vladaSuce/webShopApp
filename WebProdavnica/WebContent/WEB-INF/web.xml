@@ -162,4 +162,21 @@
     <servlet-name>KategorijaNamestajServlet</servlet-name>
     <url-pattern>/KategorijaNamestajServlet</url-pattern>
   </servlet-mapping>
+  <context-param>
+    <description>Location to store uploaded file</description>
+    <param-name>file-upload</param-name>
+    <param-value>
+         c:\WebShopVlada\
+     </param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>AddMultimediaServlet</display-name>
+    <servlet-name>AddMultimediaServlet</servlet-name>
+    <servlet-class>servlet.AddMultimediaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMultimediaServlet</servlet-name>
+    <url-pattern>/AddMultimediaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
