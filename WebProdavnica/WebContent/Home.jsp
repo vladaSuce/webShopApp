@@ -24,7 +24,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-		<script src="<c:url value="/js/namestaj.js" />"></script>
+
+    <script src="<c:url value="js/namesataj.js" />"></script>
+
 </head>
 
 <body>
@@ -40,7 +42,7 @@
                 <div class="list-group">
                 <c:forEach var="kategorija" items="${kategorije}">
     			
-                    <a href="./KategorijaNamestajServlet?name=${kategorija.naziv}" class="list-group-item active" onclick="namestaj.getNamestajPoKategoriji(${kategorija.naziv})">${kategorija.naziv}</a> 
+                    <a href="javascript:;" onclick="namestaj.getNamestajZaKategoriju('${kategorija.naziv}')" class="list-group-item active">${kategorija.naziv}</a>
                     
 				</c:forEach>
                 </div>
@@ -62,27 +64,16 @@
                     </div>
                 </div>
 
-                <div class="well">
-				 <c:forEach var="namestaj" items="${namestajiPoKategoriji}">
-    			
-            
-                    
-				
+                <div id="namestaj-items-root" class="well">
                     <hr>
-
                     <div class="row">
                         <div class="col-md-12">
 							
-                          
+                            Anonymous
                             <span class="pull-right">${namestaj.jedinicnaCena}</span>
                             <p>${namestaj.naziv}</p>
                         </div>
                     </div>
-
-
-                  </c:forEach>
-                 
-
 
                 </div>
 

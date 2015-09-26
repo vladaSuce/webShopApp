@@ -31,11 +31,13 @@
                     </div>
                     <div class="form-group">
                         <label class="standard-text" for="usernameLogin">Korisnicko ime:</label>
-                        <input type="text" name="username" placeholder="Korisnicko ime..." id="usernameLogin" class="form-control form-username">
+                        <input type="text" name="username" onkeypress="korisnik.proveriPolje(this, '#usernameLoginError')" placeholder="Korisnicko ime..." id="usernameLogin" class="form-control form-username">
+						<span id="usernameLoginError" class="app-field-error">Polje je prazno, molimo Vas upisite korisnicko ime</span>
                     </div>
                     <div class="form-group">
                         <label class="standard-text" for="passwordLogin">Sifra:</label>
-                        <input type="password" name="password" placeholder="Sifra..." id="passwordLogin" class="form-control form-password">
+                        <input type="password" name="password" onkeypress="korisnik.proveriPolje(this, '#passwordLoginError')" placeholder="Sifra..." id="passwordLogin" class="form-control form-password">
+						<span id="passwordLoginError" class="app-field-error">Polje je prazno, molimo Vas upisite sifru</span>
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" name="submit" class="btn">Login</button>

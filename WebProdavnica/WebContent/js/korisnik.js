@@ -17,11 +17,22 @@ function Korisnik() {
 	Korisnik.prototype.getLozinka = function() {
 		return this.lozinka;
 	}
+	Korisnik.prototype.proveriPolje = function(ovajElement, errorSelector) {
+		if (ovajElement.val() != '') {
+			
+		}
+	}
 	Korisnik.prototype.loginKorisnika = function(usernameSelector, passwordSelector) {
 		this.korisnickoIme = $(usernameSelector).val();
 		this.lozinka = $(passwordSelector).val();
 
 		console.log(this.korisnickoIme + ' - ' + this.lozinka);
+		if (this.korisnickoIme == '' || this.korisnickoIme == null) {
+			$('#usernameLoginError').show();
+		}
+		if (this.lozinka == '' || this.lozinka == null) {
+			$('#passwordLoginError').show();
+		}
 		$.ajax({
 			dataType: 'json',
 			contentType: 'application/json',
@@ -41,8 +52,6 @@ function Korisnik() {
 	Korisnik.prototype.loginAdminKorisnika = function(usernameSelector, passwordSelector) {
 		this.korisnickoIme = $(usernameSelector).val();
 		this.lozinka = $(passwordSelector).val();
-		//setKorisnickoIme(usernameSelector);
-		//setLozinka(passwordSelector);
 		console.log(this.korisnickoIme + ' - ' + this.lozinka);
 		$.ajax({
 			dataType: 'json',

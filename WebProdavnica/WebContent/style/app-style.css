@@ -12,3 +12,8 @@
     background-color: #DDD;
     margin-top: 20px;
 }
+
+.app-field-error {
+    color: red;
+    display: none;
+}

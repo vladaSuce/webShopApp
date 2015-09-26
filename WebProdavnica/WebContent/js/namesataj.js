@@ -89,6 +89,22 @@ function Namestaj() {
 	        }
 		});
 	}
+
+	Namestaj.prototype.getNamestajZaKategoriju = function(nazivKategorije) {
+		console.log(nazivKategorije);
+		$.ajax({
+			contentType: 'application/json',
+			mimeType: 'application/json',
+			url: 'KategorijaNamestajServlet?name=' + nazivKategorije,
+			type: 'GET',
+			success: function(data) {
+				console.log(data);
+			},
+			error: function(data,status,er) {
+				alert("error: " + data + " status: " + status + " er:" + er);
+			}
+		});
+	}
 	
 }
 
