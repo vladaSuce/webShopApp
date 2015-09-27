@@ -37,10 +37,7 @@ public class DodatneUslugeServlet extends HttpServlet {
 		String parametri = request.getParameter("name");
 		String[] nizParametara=parametri.split("\\?");
 		String nazivDodUSl  = nizParametara[0];
-		System.out.println(parametri);
 		String function =nizParametara[1];
-		System.out.println(nazivDodUSl);
-		System.out.println(function);
 		WebProdavnica prodavnica = WebProdavnica.getInstance();
 		try {
 			DodatnaUsluga usluga = prodavnica.loadDodatnaUsluga(nazivDodUSl);

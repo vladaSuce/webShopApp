@@ -57,5 +57,10 @@
 			</div>
 		</div>
 	</c:forEach>
+			<c:if test="${user.uloga=='prodavac'}">
+						<div class="col-md-12">
+							<button class="pull-right" onclick="javascript:window.location.href='./AddDodatnaUsluga.jsp'">Dodaj novu dodatnu uslugu</button>
+						</div>
+						</c:if>
 </body>
 </html>

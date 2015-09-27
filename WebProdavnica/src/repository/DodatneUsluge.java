@@ -57,11 +57,12 @@ public class DodatneUsluge {
 	}
 	public void addUsluga(DodatnaUsluga usluga) throws Exception{
 		for(DodatnaUsluga usl : usluge){
-			if(usl.equals(usluga))
+			if(usl.getNaziv().equals(usluga.getNaziv()))
 			 throw new Exception("DodatnaUsluga sa nazivom:  "+usluga.getNaziv() + " vec postoji u sistemu" );
 		}
 		usluge.add(usluga);
 		saveDodatneUsluge();
+		loadDodatneUsluge();
 	}
 	public void removeUsluga(String nazivUsluge) throws Exception{
 		DodatnaUsluga usluga = loadUsluga(nazivUsluge);

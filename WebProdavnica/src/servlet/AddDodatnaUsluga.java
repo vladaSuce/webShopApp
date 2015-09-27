@@ -3,6 +3,7 @@ package servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import server.model.WebProdavnica;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 /**
  * Servlet implementation class AddDodatnaUsluga
@@ -57,7 +59,23 @@ public class AddDodatnaUsluga extends HttpServlet {
 		DodatnaUsluga dodatnaUsluga = gson.fromJson(json, DodatnaUsluga.class);
 		WebProdavnica prodavnica = WebProdavnica.getInstance();
 		updateDodatnaUsluga(dodatnaUsluga, prodavnica);
+		ArrayList<DodatnaUsluga>dodusl =  prodavnica.getAllDodatneUsluge();
+
+		session.setAttribute("dodatneUsluge", dodusl);
+		redirect(response);
 	
+	}
+
+	protected void redirect(HttpServletResponse response) {
+		
+		try {
+			JsonObject re = new JsonObject();
+			re.addProperty("url", "DodatneUsluge.jsp");
+			response.getWriter().print(re);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void updateDodatnaUsluga(DodatnaUsluga dodatnaUsluga,

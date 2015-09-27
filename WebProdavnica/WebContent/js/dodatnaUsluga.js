@@ -24,15 +24,16 @@ function DodatnaUsluga(){
 	DodatnaUsluga.prototype.getCena = function() {
 		return this.cena;
 	}
-	DodatnaUsluga.prototype.fillData = function(naziv,opis,cena,servlet) {
-		setNaziv(naziv);
-		setCena(cena);
-		setOpis(opis);
+	DodatnaUsluga.prototype.fillData = function(naziv,opis,cena) {
+		this.naziv =$(naziv).val();
+		this.opis =$(opis).val();
+		this.cena =$(cena).val();
+		console.log(this.naziv + ' - ' + this.cena);
 		$.ajax({
 			dataType: 'json',
 			contentType: 'application/json',
 			mimeType: 'application/json',
-			url: servlet,
+			url: 'AddDodatnaUsluga',
 			type: 'POST',
 			data: JSON.stringify(dodatnaUsluga),
 			success: function(data) {
