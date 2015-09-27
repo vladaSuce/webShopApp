@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>WebProdavnica</display-name>
   <welcome-file-list>
-    <welcome-file>LoginForm.jsp</welcome-file>
+    <welcome-file>WelcomeUserServlet</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -178,5 +178,15 @@
   <servlet-mapping>
     <servlet-name>AddMultimediaServlet</servlet-name>
     <url-pattern>/AddMultimediaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WelcomeUserServlet</display-name>
+    <servlet-name>WelcomeUserServlet</servlet-name>
+    <servlet-class>servlet.WelcomeUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WelcomeUserServlet</servlet-name>
+    <url-pattern>/WelcomeUserServlet</url-pattern>
   </servlet-mapping>
 </web-app>
