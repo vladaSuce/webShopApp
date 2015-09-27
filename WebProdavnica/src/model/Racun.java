@@ -10,6 +10,7 @@ public class Racun implements Serializable {
 	 */
 	private static final long serialVersionUID = -7002957384751192543L;
 	protected ArrayList<Namestaj>listaNamestaja;
+	protected ArrayList<DodatnaUsluga>listaDodatnihUsluga;
 	protected double porez;
 	protected double ukupnaCena;
 	protected String datumVreme;
@@ -76,12 +77,24 @@ public class Racun implements Serializable {
 		this.datumKupovine = datumKupovine;
 	}
 
+	public ArrayList<DodatnaUsluga> getListaDodatnihUsluga() {
+		return listaDodatnihUsluga;
+	}
+
+	public void setListaDodatnihUsluga(ArrayList<DodatnaUsluga> listaDodatnihUsluga) {
+		this.listaDodatnihUsluga = listaDodatnihUsluga;
+	}
+
 	@Override
 	public String toString() {
-		return "Racun [listaNamestaja=" + listaNamestaja + ", porez=" + porez
-				+ ", ukupnaCena=" + ukupnaCena + ", datumVreme=" + datumVreme
-				+ ", kupac=" + kupac + "]";
+		return "Racun [listaNamestaja=" + listaNamestaja
+				+ ", listaDodatnihUsluga=" + listaDodatnihUsluga + ", porez="
+				+ porez + ", ukupnaCena=" + ukupnaCena + ", datumVreme="
+				+ datumVreme + ", datumKupovine=" + datumKupovine + ", kupac="
+				+ kupac + "]";
 	}
+
+
 	
 	
 	

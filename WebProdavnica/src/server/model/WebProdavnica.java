@@ -184,6 +184,9 @@ public class WebProdavnica {
 	public synchronized ArrayList<Kategorija>getAllRootKategorije(){
 		return kategorije.getAllRootKategorija();
 	}
+	public synchronized ArrayList<DodatnaUsluga>getAllDodatneUsluge(){
+		return usluge.getUsluge();
+	}
 	
 	public synchronized ArrayList<Namestaj>getAllNamestaj(){
 		return namestaji.getNamestaji();

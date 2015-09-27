@@ -199,4 +199,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodatneUslugeServlet</display-name>
+    <servlet-name>DodatneUslugeServlet</servlet-name>
+    <servlet-class>servlet.DodatneUslugeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodatneUslugeServlet</servlet-name>
+    <url-pattern>/DodatneUslugeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

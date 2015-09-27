@@ -22,6 +22,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import model.DodatnaUsluga;
 import model.Kategorija;
 import model.Korisnik;
 import model.Korisnik.Uloga;
@@ -100,6 +101,8 @@ public class LoginUserServlet extends HttpServlet {
 				session.setAttribute("salon", salon);
 				ArrayList<Kategorija> kategorije =  prodavnica.getAllRootKategorije();
 				session.setAttribute("kategorije", kategorije);
+				ArrayList<DodatnaUsluga>dodatneUsluge = prodavnica.getAllDodatneUsluge();
+				session.setAttribute("dodatneUsluge", dodatneUsluge);
 				String urlToRedirect = "Home.jsp";
 				result.addProperty("url", urlToRedirect);
 				//	result.add("type", "POST");
