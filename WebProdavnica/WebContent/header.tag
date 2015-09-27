@@ -16,20 +16,24 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="./KategorijaNamestajServlet">Namestaj</a>
+                        <a href="./Home.jsp">Namestaj</a>
                     </li>
                     <li>
                         <a href="#">Dodatne usluge</a>
                     </li>
+                    <c:if test="${ user.uloga =='kupac'}">
                      <li>
                         <a href="#">Kupovina</a>
                     </li>
+                    </c:if>
                      <li>
                         <a href="#">Akcijska prodaja</a>
                     </li>
+                    
                     <li>
                         <a href="#">Izvestaji</a>
                     </li>
+                    
                      <li>
                         <a href="#">Racuni</a>
                     </li>
