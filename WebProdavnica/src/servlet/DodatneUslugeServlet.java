@@ -48,7 +48,8 @@ public class DodatneUslugeServlet extends HttpServlet {
 				response.sendRedirect("./DodatneUsluge.jsp");
 			}
 			else{
-				response.sendRedirect("./EditDodatnaUsluga.jsp");
+				request.getSession().setAttribute("tempUsluga",prodavnica.loadDodatnaUsluga(nazivDodUSl));
+				response.sendRedirect("./AddDodatnaUsluga.jsp");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

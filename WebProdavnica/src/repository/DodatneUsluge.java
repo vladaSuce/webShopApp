@@ -77,12 +77,14 @@ public class DodatneUsluge {
 	}
 	public void editUsluga(DodatnaUsluga novaUsluga) throws Exception{
 		for(DodatnaUsluga usluga : usluge){
-			if (usluga.equals(novaUsluga)){
+			if (usluga.getNaziv().equals(novaUsluga.getNaziv())){
 				usluge.remove(usluga);
 				usluge.add(novaUsluga);
-				saveDodatneUsluge();
+				break;
 			}
 		}
+		saveDodatneUsluge();
+		loadDodatneUsluge();
 	}
 
 	public DodatnaUsluga loadUsluga(String nazivUsluge) throws Exception {

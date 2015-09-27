@@ -45,6 +45,27 @@ function DodatnaUsluga(){
 	        }
 		});
 	}
+	DodatnaUsluga.prototype.fillDataEdit = function(naziv,opis,cena) {
+		this.naziv =$(naziv).val();
+		this.opis =$(opis).val();
+		this.cena =$(cena).val();
+		console.log(this.naziv + ' - ' + this.cena);
+		$.ajax({
+			dataType: 'json',
+			contentType: 'application/json',
+			mimeType: 'application/json',
+			url: 'EditDodatnaUsluga',
+			type: 'POST',
+			data: JSON.stringify(dodatnaUsluga),
+			success: function(data) {
+				console.log(data);
+				window.location = data.url;
+			},
+			error: function(data,status,er) {
+	            alert("error: " + data + " status: " + status + " er:" + er);
+	        }
+		});
+	}
 }
 
 var dodatnaUsluga = new DodatnaUsluga();

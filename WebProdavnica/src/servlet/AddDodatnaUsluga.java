@@ -62,6 +62,7 @@ public class AddDodatnaUsluga extends HttpServlet {
 		ArrayList<DodatnaUsluga>dodusl =  prodavnica.getAllDodatneUsluge();
 
 		session.setAttribute("dodatneUsluge", dodusl);
+		session.setAttribute("tempUsluga", null);
 		redirect(response);
 	
 	}

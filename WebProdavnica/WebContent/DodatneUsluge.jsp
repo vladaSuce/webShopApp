@@ -46,7 +46,7 @@
 
 					<c:if test="${user.uloga=='prodavac'}">
 						<div class="col-md-12">
-							<button class="pull-right">Edituj dodatnu uslugu</button>
+							<button class="pull-right" onclick="javascript:window.location.href='./DodatneUslugeServlet?name=${usluga.naziv}?edit'">Edituj dodatnu uslugu</button>
 							<button class="pull-right" onclick="javascript:window.location.href='./DodatneUslugeServlet?name=${usluga.naziv}?delete'">Obrisi dodatnu uslugu</button>
 						</div>
 					</c:if>
