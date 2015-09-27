@@ -4,7 +4,7 @@
 function Korisnik() {
 	this.korisnickoIme;
 	this.lozinka;
-	this.losiKredencijali = false;
+	this.uloga;
 	Korisnik.prototype.setKorisnickoIme = function(korisnickoIme) {
 		this.korisnickoIme = korisnickoIme;
 	}
@@ -16,6 +16,12 @@ function Korisnik() {
 	}
 	Korisnik.prototype.getLozinka = function() {
 		return this.lozinka;
+	}
+	Korisnik.prototype.setUloga = function(uloga) {
+		this.uloga = uloga;
+	}
+	Korisnik.prototype.getUloga = function() {
+		return this.uloga;
 	}
 	Korisnik.prototype.proveriPolje = function(ovajElement, errorSelector) {
 		if (ovajElement.val() != '') {
@@ -74,3 +80,6 @@ function Korisnik() {
 // create new instance of class Korisnik
 // needed for login page
 var korisnik = new Korisnik();
+var uloga = $('#ulogaKorisnika').val();
+korisnik.setUloga(uloga);
+

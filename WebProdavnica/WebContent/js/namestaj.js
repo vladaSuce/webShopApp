@@ -131,8 +131,21 @@ function Namestaj() {
 			'<div class="col-md-12">' +
 			'<span class="pull-right">${kolicinaUMagacinu} komad(a)</span>' +
 			'<a href="javascript:;" onclick="namestaj.prikaziPodatkeZaKomadNamestaja(\'${naziv}\')">${naziv}</a>' +
-			'</div>' +
 			'</div>';
+		if (korisnik.uloga == 'prodavac') {
+			markup +=  '<div class="col-md-12 pull-right">' +
+						'<button class="pull-right" onclick="javascript:window.location.href=\'./DodatneUslugeServlet?name=${naziv}?function=edit\'">Edituj</button>' +
+						'<button class="pull-right" onclick="javascript:window.location.href=\'./DodatneUslugeServlet?name=${naziv}?function=delete\'">Obrisi</button>' +
+						'</div>' +
+						'</div>';
+		} else if (korisnik.uloga == 'kupac'){
+			markup +=  '<div class="col-md-12 pull-right">' +
+						'<button class="pull-right" onclick="javascript:window.location.href=\'./DodatneUslugeServlet?name=${naziv}?function=update\'">Kupi</button>' +
+						'</div>' +
+						'</div>';
+		} else {
+			markup += '</div>';
+		}
 
 		// Compile the markup as a named template
 		$.template("namestajTemplate", markup);

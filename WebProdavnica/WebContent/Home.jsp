@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
   <%@ include file="header.tag" %>
 
     <!-- Page Content -->
@@ -40,10 +41,16 @@
                 <c:forEach var="kategorija" items="${kategorije}">
                     <div class="app-menu-item">
                         <a href="javascript:;" onclick="namestaj.getNamestajZaKategoriju('${kategorija.naziv}')" class="active">${kategorija.naziv}</a>
-                        <c:if test="${!empty kategorija.podKategorije}">
-                            <span onclick="kategorija.getSubkategorijeZaKategoriju(this, '${kategorija.naziv}')" class="app-arrow pull-right caret"></span>
+                        <c:if test="${not empty kategorija.podKategorije}">
+                            <span onclick="kategorija.otvoriZatvoriSubmenu('#app-podKategorije-lista')" class="app-arrow pull-right caret"></span>
                         </c:if>
-                        <ul></ul>
+                        <div id="app-podKategorije-lista" class="list-group" style="display: none;">
+                        <c:forEach var="podKategorijaNaziv" items="${kategorija.podKategorije}">
+                            <div class="app-menu-item app-gray-color">
+                                <a href="javascript:;" onclick="namestaj.getNamestajZaKategoriju('${podKategorijaNaziv}')" class="active">${podKategorijaNaziv}</a>
+                            </div>
+                        </c:forEach>
+                        </div>
                     </div>
 				</c:forEach>
                 </div>
@@ -58,6 +65,11 @@
                 <div id="namestaj-items-root" class="well">
                     <%-- Placeholder za namestaj renderovan preko jQuery-ja --%>
                 </div>
+                <c:if test="${user.uloga=='prodavac'}">
+                <div class="pull-right">
+                    <button type="button" class="btn">Dodaj namestaj</button>
+                </div>
+                </c:if>
 
             </div>
 
@@ -82,12 +94,15 @@
     </div>
     <!-- /.container -->
 
+<input id="ulogaKorisnika" type="hidden" value="${user.uloga}"/>
+
     <!-- jQuery -->
     <script src="lib/js/jquery-2.1.4.js"></script>
     <script src="lib/js/jquery.tmpl.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="lib/css/bootstrap/js/bootstrap.js"></script>
+    <script src="<c:url value="js/korisnik.js" />"></script>
 
 </body>
 

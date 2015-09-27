@@ -47,3 +47,7 @@
 .app-arrow:hover {
     cursor: pointer;
 }
+
+.app-gray-color {
+    background-color: gray;
+}

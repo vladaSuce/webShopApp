@@ -73,5 +73,8 @@ function Kategorija(){
 			}
 		});
 	}
+	Kategorija.prototype.otvoriZatvoriSubmenu = function (selektor) {
+		$(selektor).fadeToggle();
+	}
 }
 var kategorija = new Kategorija();
