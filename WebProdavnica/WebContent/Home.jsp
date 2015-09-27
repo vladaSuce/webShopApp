@@ -18,9 +18,11 @@
 
     <!-- Custom CSS -->
     <link href="css/shop-item.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/app-style.css">
 
     <script src="<c:url value="js/helper.js" />"></script>
     <script src="<c:url value="js/namestaj.js" />"></script>
+    <script src="<c:url value="js/kategorija.js" />"></script>
 
 </head>
 
@@ -36,9 +38,13 @@
                 <p class="lead">Shop Name</p>
                 <div class="list-group">
                 <c:forEach var="kategorija" items="${kategorije}">
-    			
-                    <a href="javascript:;" onclick="namestaj.getNamestajZaKategoriju('${kategorija.naziv}')" class="list-group-item active">${kategorija.naziv}</a>
-                    
+                    <div class="app-menu-item">
+                        <a href="javascript:;" onclick="namestaj.getNamestajZaKategoriju('${kategorija.naziv}')" class="active">${kategorija.naziv}</a>
+                        <c:if test="${!empty kategorija.podKategorije}">
+                            <span onclick="kategorija.getSubkategorijeZaKategoriju(this, '${kategorija.naziv}')" class="app-arrow pull-right caret"></span>
+                        </c:if>
+                        <ul></ul>
+                    </div>
 				</c:forEach>
                 </div>
             </div>

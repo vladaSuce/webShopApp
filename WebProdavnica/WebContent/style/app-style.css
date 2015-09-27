@@ -17,3 +17,33 @@
     color: red;
     display: none;
 }
+
+.app-menu-item {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    padding: 10px 15px;
+}
+
+.app-menu-item > .active,
+.app-menu-item > .active:hover {
+     color: #fff;
+ }
+
+.app-menu-item > .active:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.app-menu-item:first-child {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.app-arrow {
+    margin-top: 9px;
+    color: #fff;
+}
+
+.app-arrow:hover {
+    cursor: pointer;
+}

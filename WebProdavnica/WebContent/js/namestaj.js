@@ -99,7 +99,6 @@ function Namestaj() {
 	}
 
 	Namestaj.prototype.getNamestajZaKategoriju = function(nazivKategorije) {
-		console.log(nazivKategorije);
 		$.ajax({
 			dataType: 'json',
 			contentType: 'application/json',

@@ -45,5 +45,33 @@ function Kategorija(){
 	        }
 		});
 	}
+	Kategorija.prototype.getSubkategorijeZaKategoriju = function(element, nazivKategorije) {
+		$.ajax({
+			dataType: 'json',
+			contentType: 'application/json',
+			mimeType: 'application/json',
+			url: 'KategorijaNamestajServlet?kategorija=' + nazivKategorije,
+			type: 'GET',
+			beforeSend: function() {
+				$("#namestaj-items-root").hide();
+				$("#namestaj-items-root").empty();
+			},
+			success: function(data) {
+				console.log(data);
+				var markup = '<li>${naziv}</li>';
+
+				// Compile the markup as a named template
+				$.template("submenuTemplate", markup);
+
+				// Render the template with the movies data and insert
+				// the rendered HTML under the "movieList" element
+				$("#namestaj-items-root").show();
+				$.tmpl("submenuTemplate", data).appendTo($(element).next());
+			},
+			error: function(data,status,er) {
+				alert("error: " + data + " status: " + status + " er:" + er);
+			}
+		});
+	}
 }
 var kategorija = new Kategorija();
