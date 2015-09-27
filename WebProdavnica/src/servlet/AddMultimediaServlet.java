@@ -46,8 +46,9 @@ public class AddMultimediaServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		 filePath = getServletContext().getInitParameter("file-upload"); 
+		if(request.getSession().getAttribute("user")==null)
+			response.sendRedirect("./LoginForm.jsp");
+		filePath = getServletContext().getInitParameter("file-upload"); 
 		isMultipart = ServletFileUpload.isMultipartContent(request);
 		response.setContentType("aplication/json");
 

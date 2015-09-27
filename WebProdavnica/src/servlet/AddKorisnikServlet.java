@@ -41,6 +41,8 @@ public class AddKorisnikServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("user")==null)
+			response.sendRedirect("./LoginForm.jsp");
 		response.setContentType("application/json"); 
 		HttpSession session = request.getSession();
 		// get received JSON data from request

@@ -46,6 +46,8 @@ public class PretragaNamestajaServlet extends HttpServlet {
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("user")==null)
+			response.sendRedirect("./LoginForm.jsp");
 		response.setContentType("application/json"); 
 		HttpSession session = request.getSession();
 		// get received JSON data from request

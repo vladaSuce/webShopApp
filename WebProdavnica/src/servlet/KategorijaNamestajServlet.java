@@ -40,6 +40,8 @@ public class KategorijaNamestajServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(request.getSession().getAttribute("user")==null)
+			response.sendRedirect("./LoginForm.jsp");
 		String nazivKategorijeNamestaj =  request.getParameter("name");
 		String nazivKategorije = request.getParameter("kategorija");
 		if(nazivKategorije==null && nazivKategorijeNamestaj==null){
