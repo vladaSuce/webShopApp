@@ -216,4 +216,10 @@ public class WebProdavnica {
 		while(kategorije.getAllKategorija().size()>0)
 		kategorije.removeKategorija(kategorije.getAllKategorija().get(0).getNaziv());
 	}
+	public synchronized DodatnaUsluga loadDodatnaUsluga(String uslNaziv) throws Exception{
+		return usluge.loadUsluga(uslNaziv);
+	}
+	public synchronized void deleteUsluga(DodatnaUsluga usla) throws Exception{
+		usluge.removeUsluga(usla.getNaziv());
+	}
 }

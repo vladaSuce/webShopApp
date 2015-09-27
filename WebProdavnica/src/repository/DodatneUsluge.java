@@ -68,10 +68,11 @@ public class DodatneUsluge {
 		for(DodatnaUsluga uslugaTemp : usluge){
 			if (uslugaTemp.equals(usluga)){
 				usluge.remove(uslugaTemp);
-				saveDodatneUsluge();
 				break;
 			}
 		}
+		saveDodatneUsluge();
+		loadDodatneUsluge();
 	}
 	public void editUsluga(DodatnaUsluga novaUsluga) throws Exception{
 		for(DodatnaUsluga usluga : usluge){
