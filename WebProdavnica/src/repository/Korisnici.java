@@ -100,7 +100,7 @@ public class Korisnici {
 	public boolean loginKorisnik(String userName,String password){
 		boolean retVal =false;
 		for(Korisnik k :korisnici){
-			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
+			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)&& k.getUloga()!=Uloga.prodavac){
 				retVal =true;
 				break;
 			}
@@ -111,7 +111,7 @@ public class Korisnici {
 		boolean retVal =false;
 		for(Korisnik k :korisnici){
 			if(k.getKorisnickoIme().equals(userName)&& k.getLozinka().equals(password)){
-				if(k.getUloga().equals(Uloga.menadzer))
+				if(k.getUloga().equals(Uloga.prodavac))
 					retVal =true;
 				else
 					retVal=false;

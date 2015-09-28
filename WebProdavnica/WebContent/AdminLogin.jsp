@@ -13,14 +13,14 @@
 	<script src="<c:url value="lib/css/bootstrap/js/bootstrap.js" />"></script>
 	<script src="<c:url value="js/korisnik.js" />"></script>
 
-	<title>Logovanje menadzera(admina)</title>
+	<title>Logovanje prodavaca(admina)</title>
 </head>
 <body>
 
 <div class="container">
 	<div class="row">
 		<div class="text-center">
-			<span class="btn app-btn-login pull-right"><a class="app-no-link" href="./LoginForm.jsp">Logovanje prodavaca i kupaca</a></span>
+			<span class="btn app-btn-login pull-right"><a class="app-no-link" href="./LoginForm.jsp">Logovanje menadzera i kupaca</a></span>
 		</div>
 	</div>
 	<div class="row">

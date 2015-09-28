@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="text-center">
-                <span class="btn app-btn-login pull-right"><a class="app-no-link" href="./AdminLogin.jsp">Logovanje menadzera(admina)</a></span>
+                <span class="btn app-btn-login pull-right"><a class="app-no-link" href="./AdminLogin.jsp">Logovanje prodavaca(admina)</a></span>
             </div>
         </div>
         <div class="row">
