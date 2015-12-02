@@ -1,6 +1,7 @@
 import model.DodatnaUsluga;
 import model.Kategorija;
 import model.Korisnik;
+import model.Salon;
 import model.Korisnik.Uloga;
 import model.Namestaj;
 import repository.DodatneUsluge;
@@ -35,7 +36,16 @@ public class test {
 //		dodusl.addUsluga(usluga);
 		
 	WebProdavnica prodavnica= WebProdavnica.getInstance();
-	prodavnica.printKategorije();
+	Salon salon =new Salon();
+	salon.setAdresa("Novosadskog sajma 24");
+	salon.setBrojZiroRacuna("841-0002000100123-97");
+	salon.seteMail("salon2@gmail.com");
+	salon.setMaticniBroj("1243990850003");
+	salon.setNaziv("Testeric salon namestaja");
+	salon.setTelefon("021/545-160");
+	salon.setPib("2103990101");
+	salon.setWebPage("");
+	System.out.println(prodavnica.getSaloni());
 	
 //	Kategorija k = new Kategorija();
 //	k.setNadKategorija(null);
@@ -77,23 +87,14 @@ public class test {
 ////		
 //		
 //		WebProdavnica prodavnica= WebProdavnica.getInstance();
-		Namestaj n = new Namestaj();
-		n.setBoja("Braon");
-		n.setGodinaProizvodnje(2015);
-		n.setKategorija(prodavnica.loadKategorija("Decije sobe"));
-		n.setJedinicnaCena(73000);
-		n.setKolicinaUMagacinu(10);
-		n.setNaziv("KREVETAC SARA Z-22");
-		n.setSalon(prodavnica.getSalon());
-		n.setNazivProizvodjaca("SaraDOO");
-		n.setSifra("s00580");
-		prodavnica.addNmestaj(n);
+
 //		prodavnica.printNamestaj();
 //		prodavnica.printKategorije();
 //		DodatnaUsluga dod =  new DodatnaUsluga();
-//		dod.setNaziv("Izrada posebnog stofa");
-//		dod.setOpis("Troskovi izrade stofa koji je van stof karte");
+//		dod.setNaziv("Prevoz robe van grad");
+//		dod.setOpis("Troskovi prevoza robe do adrese kupca na udaljenost od pradavnice do 30 km");
 //		dod.setCena(3000);
+//		prodavnica.addDodatnaUsluga(dod);
 //		prodavnica.printDodUSL();//(dod);
 //		Kategorija k = new Kategorija();
 //		k.setNaziv("Dnevne sobe");

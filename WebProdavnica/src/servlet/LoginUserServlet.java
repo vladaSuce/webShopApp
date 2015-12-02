@@ -83,7 +83,7 @@ public class LoginUserServlet extends HttpServlet {
 				// put page name for redirection in result JSON
 				korisnik=prodavnica.loadKorisnik(korisnik.getKorisnickoIme());
 				session.setAttribute("user", korisnik);
-				Salon salon = prodavnica.getSalon();
+				ArrayList<Salon> saloni = prodavnica.getSaloni();
 				if(korisnik.getUloga().equals(Uloga.kupac)){
 					Racun korpa = new Racun();
 					korpa.setKupac(korisnik);
@@ -98,7 +98,7 @@ public class LoginUserServlet extends HttpServlet {
 					korpa.setDatumKupovine(datum);
 					session.setAttribute("korpa", korpa);
 				}
-				session.setAttribute("salon", salon);
+				session.setAttribute("saloni", saloni);
 				ArrayList<Kategorija> kategorije =  prodavnica.getAllRootKategorije();
 				session.setAttribute("kategorije", kategorije);
 				ArrayList<DodatnaUsluga>dodatneUsluge = prodavnica.getAllDodatneUsluge();

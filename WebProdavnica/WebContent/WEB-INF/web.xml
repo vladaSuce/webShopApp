@@ -209,4 +209,24 @@
     <servlet-name>DodatneUslugeServlet</servlet-name>
     <url-pattern>/DodatneUslugeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PrepareDodatnaUslugaServlet</display-name>
+    <servlet-name>PrepareDodatnaUslugaServlet</servlet-name>
+    <servlet-class>servlet.PrepareDodatnaUslugaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrepareDodatnaUslugaServlet</servlet-name>
+    <url-pattern>/PrepareDodatnaUslugaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DodajUKorpuServlet</display-name>
+    <servlet-name>DodajUKorpuServlet</servlet-name>
+    <servlet-class>servlet.DodajUKorpuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DodajUKorpuServlet</servlet-name>
+    <url-pattern>/DodajUKorpuServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -15,6 +15,7 @@ import repository.Korisnici;
 import repository.Namestaji;
 import repository.Racuni;
 import repository.SalonRepo;
+import repository.Saloni;
 import repository.TipPretrageNamestaja;
 
 
@@ -25,13 +26,13 @@ public class WebProdavnica {
 	private Kategorije kategorije ;
 	private Korisnici korisnici ;
 	private Namestaji namestaji ;	
-	private SalonRepo salonRepo;
+	private Saloni saloni;
 	private Racuni racuni;
 	private static WebProdavnica instance;
 
 	public WebProdavnica(){
 		korisnici = Korisnici.getInstance();
-		salonRepo = SalonRepo.getInstance();
+		saloni = Saloni.getInstance();
 		usluge = DodatneUsluge.getInstance();
 		kategorije = Kategorije.getInstance();
 		namestaji = Namestaji.getInstance();
@@ -145,8 +146,12 @@ public class WebProdavnica {
 	public synchronized Korisnik loadKorisnik(String userName){
 		return korisnici.loadKorisnik(userName);
 	}
-	public synchronized Salon getSalon (){
-		return salonRepo.getSalon();
+	
+	public synchronized ArrayList<Salon> getSaloni (){
+		return saloni.getSaloni();
+	}
+	public  synchronized void addSalon(Salon salon) throws Exception{
+		saloni.addSalon(salon);
 	}
 	public synchronized void printKorisnici(){
 		for(int i =0;i<korisnici.getAllKorisnik().size();i++){
