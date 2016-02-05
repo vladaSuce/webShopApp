@@ -101,6 +101,8 @@ public class LoginUserServlet extends HttpServlet {
 				session.setAttribute("saloni", saloni);
 				ArrayList<Kategorija> kategorije =  prodavnica.getAllRootKategorije();
 				session.setAttribute("kategorije", kategorije);
+				ArrayList<Kategorija> kategorijeSvihNivoa =  prodavnica.getAllKategorije();
+				session.setAttribute("kategorijeSvihNivoa", kategorijeSvihNivoa);
 				ArrayList<DodatnaUsluga>dodatneUsluge = prodavnica.getAllDodatneUsluge();
 				session.setAttribute("dodatneUsluge", dodatneUsluge);
 				String urlToRedirect = "Home.jsp";

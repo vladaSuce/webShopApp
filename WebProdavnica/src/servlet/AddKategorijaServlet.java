@@ -48,6 +48,7 @@ public class AddKategorijaServlet extends HttpServlet {
 		response.setContentType("application/json"); 
 		HttpSession session = request.getSession();
 		// get received JSON data from request
+		System.out.println("tuuuu sam");
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		String json = "";
 		if(br != null){
@@ -56,6 +57,7 @@ public class AddKategorijaServlet extends HttpServlet {
 		// deserialize JOSN to Java object
 		Gson gson = new GsonBuilder().create();
 		Kategorija kategorija = gson.fromJson(json, Kategorija.class);
+		System.out.println(kategorija);
 		WebProdavnica prodavnica = WebProdavnica.getInstance();
 		updateKategorije(kategorija, prodavnica);
 	

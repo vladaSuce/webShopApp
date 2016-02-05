@@ -59,5 +59,13 @@ public class DodatnaUsluga implements Serializable {
 		return "DodatnaUsluga [naziv=" + naziv + ", opis=" + opis + ", cena="
 				+ cena + "]";
 	}
-	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj==null)
+			return false;
+		DodatnaUsluga dodatnaUsluga = (DodatnaUsluga)obj;
+		if(getNaziv().trim().equalsIgnoreCase(dodatnaUsluga.getNaziv().trim()))
+			return true;
+		else return false;
+	}
 }

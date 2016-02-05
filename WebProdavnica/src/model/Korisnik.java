@@ -13,18 +13,20 @@ public class Korisnik implements Serializable {
 	protected String korisnickoIme;
 	protected String lozinka;
 	protected String ime;
+	protected String prezime;
 	protected Uloga uloga;
 	protected String kontaktTelefon;
 	protected String eMail;
 	
 	public Korisnik(){}
 
-	public Korisnik(String korisnickoIme, String lozinka, String ime,
+	public Korisnik(String korisnickoIme, String lozinka, String ime,String prezime,
 			Uloga uloga, String kontaktTelefon, String eMail) {
 		super();
 		this.korisnickoIme = korisnickoIme;
 		this.lozinka = lozinka;
 		this.ime = ime;
+		this.prezime = prezime;
 		this.uloga = uloga;
 		this.kontaktTelefon = kontaktTelefon;
 		this.eMail = eMail;
@@ -77,6 +79,14 @@ public class Korisnik implements Serializable {
 	public void seteMail(String eMail) {
 		this.eMail = eMail;
 	}
+ 
+	public String getPrezime() {
+		return prezime;
+	}
+
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
 
 	@Override
 	public String toString() {
@@ -85,6 +95,7 @@ public class Korisnik implements Serializable {
 				+ "korisnickoIme=" + korisnickoIme + "\n" 
 				+ " lozinka= "+ lozinka +"\n "
 				+ " ime= " + ime + "\n "
+				+ " prezime= " + prezime + "\n"
 				+ " uloga= " + uloga + "\n"
 				+ " kontaktTelefon= " + kontaktTelefon+ "\n"
 				+ " eMail= " + eMail + "\n"

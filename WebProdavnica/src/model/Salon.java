@@ -106,4 +106,14 @@ public class Salon implements Serializable {
 	}
 	
 
+	@Override
+	public boolean equals(Object obj) {
+		if(obj==null)
+			return false;
+		Salon salon = (Salon)obj;
+		if(getPib().trim().equalsIgnoreCase(salon.getPib().trim())&& getMaticniBroj().trim().equalsIgnoreCase(salon.getMaticniBroj().trim())&&  getBrojZiroRacuna().trim().equalsIgnoreCase(salon.getBrojZiroRacuna().trim()))
+			return true;
+		else return false;
+	}
+	
 }

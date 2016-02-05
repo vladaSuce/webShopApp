@@ -53,6 +53,11 @@
                         </div>
                     </div>
 				</c:forEach>
+				<c:if test="${user.uloga=='prodavac'}">
+                       <div>
+                       	<a href="./AddKategorija.jsp" class="active">Dodaj novu kategoriju</a>
+                       	</div> 
+                       </c:if>
                 </div>
             </div>
 
