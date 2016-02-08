@@ -1,7 +1,8 @@
 package repository;
 
 public interface TipPretrageNamestaja {
-	public static final int PRETRAGA_PO_NAZIVU=1;
+	public static final String PRETRAGA_NAMESTAJA="PRETRAGA_NAMESTAJA";
+	public static final String PRETRAGA_DODATNE_USLUGE="PRETRAGA_DODATNE_USLUGE";
 	public static final int PRETRAGA_PO_OPSEGU_CENA=2;
 	public static final int PRETRAGA_PO_RASPOLOZIVOJ_KOLICINI=3;
 	public static final int PRETRAGA_PO_OPISU=4;

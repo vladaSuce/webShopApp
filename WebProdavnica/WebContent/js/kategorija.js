@@ -1,5 +1,8 @@
 /**
  * 
+ * 		this.naziv =$(naziv).val();
+		this.opis =$(opis).val();
+		this.cena =$(cena).val();
  */
 
 function Kategorija(){
@@ -9,19 +12,19 @@ function Kategorija(){
 	this.nadKategorija;
 	
 	Kategorija.prototype.setNaziv = function(naziv) {
-		this.naziv=naziv;
+		this.naziv =$(naziv).val();
 	}
 	Kategorija.prototype.getNaziv = function() {
 		return this.naziv;
 	}
 	Kategorija.prototype.setOpis = function(opis) {
-		this.opis = opis;
+		this.opis =$(opis).val();
 	}
 	Kategorija.prototype.getOpis = function() {
 		return this.opis;
 	}
 	Kategorija.prototype.setPodKategorija = function(podKategorija) {
-		this.podKategorija= podKategorija;
+		this.podKategorija =$(podKategorija).val();
 	}
 	Kategorija.prototype.getPodKategorija = function() {
 		return this.podKategorija;
@@ -30,7 +33,7 @@ function Kategorija(){
 		return this.nadKategorija;
 	}
 	Kategorija.prototype.setNadKategorija = function(nadKategorija) {
-		this.nadKategorija= nadKategorija;
+		this.nadKategorija =$(nadKategorija).val();
 	}
 	Kategorija.prototype.fillData = function(naziv,opis,podKategorija,servlet) {
 		setNaziv(naziv);
@@ -52,15 +55,16 @@ function Kategorija(){
 	        }
 		});
 	}
-	Kategorija.prototype.fillDataInsert = function(naziv,opis,nadKategorija,servlet) {
-		setNaziv(naziv);
-		setOpis(opis);
-		setNadKategorija(nadKategorija);
+	Kategorija.prototype.fillDataInsert = function(naziv,opis,nadKategorija) {
+		console.log(this.naziv + ' - ' + this.opis+ ' - ' + this.nadKategorija);
+		this.naziv =$(naziv).val();
+		this.opis =$(opis).val();
+		this.nadKategorija =$(nadKategorija).val();
 		$.ajax({
 			dataType: 'json',
 			contentType: 'application/json',
 			mimeType: 'application/json',
-			url: servlet,
+			url: 'AddKategorijaServlet',
 			type: 'POST',
 			data: JSON.stringify(kategorija),
 			success: function(data) {

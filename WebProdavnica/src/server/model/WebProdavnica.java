@@ -5,18 +5,17 @@ import java.util.ArrayList;
 import model.DodatnaUsluga;
 import model.Kategorija;
 import model.Korisnik;
-import model.ModelPretrageDTO;
+import model.ModelPretrageNamestajaDTO;
 import model.Namestaj;
 import model.Racun;
+import model.RezultatPretrageDTO;
 import model.Salon;
 import repository.DodatneUsluge;
 import repository.Kategorije;
 import repository.Korisnici;
 import repository.Namestaji;
 import repository.Racuni;
-import repository.SalonRepo;
 import repository.Saloni;
-import repository.TipPretrageNamestaja;
 
 
 
@@ -104,38 +103,9 @@ public class WebProdavnica {
 	public synchronized void removeNamestaj(Namestaj namestaj) throws Exception{
 		namestaji.removeNamestaj(namestaj.getSifra());
 	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoNazivu(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_NAZIVU);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoOpseguCena(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_OPSEGU_CENA);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoRaspolozivojKolicini(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_RASPOLOZIVOJ_KOLICINI);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoOpisu(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_OPISU);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoTipu(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_TIPU);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoZemljiProizvodnje(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_ZEMLJI_PROIZVODNJE);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoBoji(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_BOJI);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoGodiniProizvodnje(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_GODINI_PROIZVODNJE);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaPoNazivuProizvodjaca(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.PRETRAGA_PO_NAZIVU_PROIZVODJACA);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestajaMULTY(ModelPretrageDTO dto) throws Exception{
-		return namestaji.pretragaNamestaja(dto, TipPretrageNamestaja.MULTI_PRETRAGA);
-	}
-	public synchronized ArrayList<Namestaj>pretragaNamestaja(ModelPretrageDTO dto,int tipPretrage) throws Exception{
-		return namestaji.pretragaNamestaja(dto, tipPretrage);
+	
+	public synchronized RezultatPretrageDTO pretragaNamestaja(ModelPretrageNamestajaDTO dto) throws Exception{
+		return namestaji.pretraga(dto);
 	}
 	public synchronized boolean loginKorisnik(String userName,String password) throws Exception{
 		return korisnici.loginKorisnik(userName, password);

@@ -76,7 +76,7 @@
 	</c:if>
 	<c:if test="${ tempKategorija==null}">
 	<form role="form"
-		onsubmit="kategorija.fillDataInsert('#nazivKategorije', '#opisKategorije','#nadKategorija',AddKategorijaServlet); return false;">
+		onsubmit="kategorija.fillDataInsert('#nazivKategorije', '#opisKategorije','#nadKategorija'); return false;">
 		
 		<div id="namestaj-items-root" class="well">
 			<hr>
@@ -94,7 +94,7 @@
 					<span class="pull-left">Opis:</span>
 				</div>
 				<div class="col-md-2">
-					<input type="text" name="opsiKategorije" id="opsiKategorije"
+					<input type="text" name="opisKategorije" id="opisKategorije"
 						class="pull-right" />
 				</div>
 			</div>
@@ -103,8 +103,13 @@
 					<span class="pull-left">Nadkategorija:</span>
 				</div>
 				<div class="col-md-2">
-				<input type="text" name="nadKategorija" id="nadKategorija"
-						class="pull-right" />
+				<select  name="nadKategorija" id="nadKategorija"
+						class="pull-right" >
+				<option value="">Bez nadkategroije</option>
+				<c:forEach var="kategorija" items="${kategorijeSvihNivoa}">
+					<option value="${kategorija.naziv}">${kategorija.naziv}</option>
+				</c:forEach>
+				</select>
 						
 				</div>
 			</div>

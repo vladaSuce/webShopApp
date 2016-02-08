@@ -8,9 +8,11 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 
+import model.DodatnaUsluga;
 import model.Kategorija;
-import model.ModelPretrageDTO;
+import model.ModelPretrageNamestajaDTO;
 import model.Namestaj;
+import model.RezultatPretrageDTO;
 
 public class Namestaji {
 
@@ -70,7 +72,7 @@ public class Namestaji {
 		for(Namestaj namestajTemp : namestaji){
 			if (namestajTemp.equals(namestaj)){
 				namestaji.remove(namestajTemp);
-				
+
 				break;
 			}
 		}
@@ -81,7 +83,7 @@ public class Namestaji {
 			if (namestaj.equals(noviNamestaj)){
 				namestaji.remove(namestaj);
 				namestaji.add(noviNamestaj);
-				
+
 				break;
 			}
 		}
@@ -100,34 +102,11 @@ public class Namestaji {
 			throw new Exception("Namestaj sa sifrom: "+sifraNamestaja+" ne postoji u sistemu!");
 		return retVal;
 	}
-	public ArrayList<Namestaj>pretragaNamestaja(ModelPretrageDTO info,int tipPretrage) throws Exception{
-		ArrayList<Namestaj> retVal = new ArrayList<Namestaj>();
-		switch(tipPretrage){
-		case (TipPretrageNamestaja.PRETRAGA_PO_NAZIVU):{
-			for (Namestaj n : namestaji){
-				if(n.getNaziv().toLowerCase().contains(info.getNaziv().toLowerCase()))
-					retVal.add(n);
-			}
-			return retVal;
-		}
-		case(TipPretrageNamestaja.PRETRAGA_PO_BOJI):{
-			for (Namestaj n : namestaji){
-				if(n.getBoja().toLowerCase().equals(info.getBoja().toLowerCase()))
-					retVal.add(n);
-			}
-			return retVal;
-		}
-		case(TipPretrageNamestaja.PRETRAGA_PO_GODINI_PROIZVODNJE):{
-			for (Namestaj n : namestaji){
-				if(n.getGodinaProizvodnje()==info.getGodinaProizvodnje())
-					retVal.add(n);
-			}
-			return retVal;
-		}
-		default :{
-			throw new Exception("Neadekvatan tip pretrage!");
-		}
-		}
+	public RezultatPretrageDTO pretraga(ModelPretrageNamestajaDTO info) throws Exception{
+		ArrayList<Namestaj> namestaj = new ArrayList<Namestaj>();
+		ArrayList<DodatnaUsluga> dodatneUsluge = new ArrayList<DodatnaUsluga>();
+		RezultatPretrageDTO retVal= new RezultatPretrageDTO();
+		return retVal;
 	}
 
 
@@ -159,24 +138,24 @@ public class Namestaji {
 			}
 		}
 		addPodKategorijaNamestaj(retVal,nazivKategorije);
-		
+
 		return retVal;
 	}
 
 
 	private void addPodKategorijaNamestaj(ArrayList<Namestaj> retVal,String naziv) throws Exception {
-			Kategorija kategoija = Kategorije.getInstance().loadKategorija(naziv);
-			if(kategoija.getPodKategorije()!=null && kategoija.getPodKategorije().size()>0){
-				for(String nazivPodkategorije : kategoija.getPodKategorije()){
-					addPodKategorijaNamestaj(retVal, nazivPodkategorije);
+		Kategorija kategoija = Kategorije.getInstance().loadKategorija(naziv);
+		if(kategoija.getPodKategorije()!=null && kategoija.getPodKategorije().size()>0){
+			for(String nazivPodkategorije : kategoija.getPodKategorije()){
+				addPodKategorijaNamestaj(retVal, nazivPodkategorije);
+			}
+		}
+		for(Namestaj namestaj : namestaji){
+			if(namestaj.getKategorija().getNaziv().equals(naziv)){
+				if(!retVal.contains(namestaj)){
+					retVal.add(namestaj);
 				}
 			}
-			for(Namestaj namestaj : namestaji){
-				if(namestaj.getKategorija().getNaziv().equals(naziv)){
-					if(!retVal.contains(namestaj)){
-						retVal.add(namestaj);
-					}
-				}
-			}
+		}
 	}
 }

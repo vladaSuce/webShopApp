@@ -3,7 +3,6 @@ package servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.DodatnaUsluga;
-import model.ModelPretrageDTO;
-import model.Namestaj;
+import model.ModelPretrageNamestajaDTO;
+import model.RezultatPretrageDTO;
 import server.model.WebProdavnica;
 
 import com.google.gson.Gson;
@@ -58,18 +56,13 @@ public class PretragaNamestajaServlet extends HttpServlet {
 		}
 		// deserialize JOSN to Java object
 		Gson gson = new GsonBuilder().create();
-		ModelPretrageDTO pretraga = gson.fromJson(json, ModelPretrageDTO.class);
+		ModelPretrageNamestajaDTO pretraga = gson.fromJson(json, ModelPretrageNamestajaDTO.class);
 		WebProdavnica prodavnica = WebProdavnica.getInstance();
-		int parametar_pretrage = 0;
-		try{
-			parametar_pretrage =Integer.parseInt( request.getParameter("pretraga"));
-		}
-		catch(Exception exp ){
 
-		}
+		
 		
 		try {
-			ArrayList<Namestaj>rezultatPretrage = prodavnica.pretragaNamestaja(pretraga,parametar_pretrage);
+			RezultatPretrageDTO rezultatPretrage = prodavnica.pretragaNamestaja(pretraga);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

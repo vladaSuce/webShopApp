@@ -32,6 +32,12 @@
 </head>
 <body>
 	<%@ include file="header.tag"%>
+	<select name="Pretraga" id="mojSelektor">
+		<option id="naziv">Naziv</option>
+		<option id="opis">Opis</option>
+	</select>
+	<input id="vrednostPretrage"/>
+	<button id="searchButton">Trazi</button>
 	<c:forEach var="usluga" items="${dodatneUsluge}">
 		<div id="namestaj-items-root" class="well">
 			<hr>

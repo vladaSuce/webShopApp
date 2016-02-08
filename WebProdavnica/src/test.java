@@ -1,13 +1,4 @@
-import model.DodatnaUsluga;
-import model.Kategorija;
-import model.Korisnik;
 import model.Salon;
-import model.Korisnik.Uloga;
-import model.Namestaj;
-import repository.DodatneUsluge;
-import repository.Kategorije;
-import repository.Korisnici;
-import repository.Namestaji;
 import server.model.WebProdavnica;
 
 
@@ -45,7 +36,7 @@ public class test {
 	salon.setTelefon("021/545-160");
 	salon.setPib("2103990101");
 	salon.setWebPage("");
-	System.out.println(prodavnica.getSaloni());
+	System.out.println(prodavnica.getAllRootKategorije());
 	
 //	Kategorija k = new Kategorija();
 //	k.setNadKategorija(null);

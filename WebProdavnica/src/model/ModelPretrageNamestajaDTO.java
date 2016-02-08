@@ -1,37 +1,16 @@
 package model;
 
-public class ModelPretrageDTO {
+public class ModelPretrageNamestajaDTO {
 
 	protected String naziv;
 	protected double cenaOd;
 	protected double cenaDo;
 	protected int raspolozivaKolicina;
 	protected String opis;
-	protected String nazivTipa;
+	protected String tip;
 	protected String zemljaProizvodnje;
 	protected int godinaProizvodnje;
-	protected String boja;
 	protected String nazivProizvodjaca;
-	
-	
-	
-	
-	public ModelPretrageDTO(String naziv, double cenaOd, double cenaDo,
-			int raspolozivaKolicina, String opis, String nazivTipa,
-			String zemljaProizvodnje, int godinaProizvodnje, String boja,
-			String nazivProizvodjaca) {
-		super();
-		this.naziv = naziv;
-		this.cenaOd = cenaOd;
-		this.cenaDo = cenaDo;
-		this.raspolozivaKolicina = raspolozivaKolicina;
-		this.opis = opis;
-		this.nazivTipa = nazivTipa;
-		this.zemljaProizvodnje = zemljaProizvodnje;
-		this.godinaProizvodnje = godinaProizvodnje;
-		this.boja = boja;
-		this.nazivProizvodjaca = nazivProizvodjaca;
-	}
 	public String getNaziv() {
 		return naziv;
 	}
@@ -62,11 +41,11 @@ public class ModelPretrageDTO {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	public String getNazivTipa() {
-		return nazivTipa;
+	public String getTip() {
+		return tip;
 	}
-	public void setNazivTipa(String nazivTipa) {
-		this.nazivTipa = nazivTipa;
+	public void setTip(String tip) {
+		this.tip = tip;
 	}
 	public String getZemljaProizvodnje() {
 		return zemljaProizvodnje;
@@ -80,12 +59,6 @@ public class ModelPretrageDTO {
 	public void setGodinaProizvodnje(int godinaProizvodnje) {
 		this.godinaProizvodnje = godinaProizvodnje;
 	}
-	public String getBoja() {
-		return boja;
-	}
-	public void setBoja(String boja) {
-		this.boja = boja;
-	}
 	public String getNazivProizvodjaca() {
 		return nazivProizvodjaca;
 	}
@@ -94,4 +67,4 @@ public class ModelPretrageDTO {
 	}
 	
 	
-	}
+}
